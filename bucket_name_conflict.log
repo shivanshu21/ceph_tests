@@ -1,0 +1,14 @@
+shivanshu@admin ~/gitcode/ceph_tests: python bug0_test2.py
+
+Created one bucket:
+bucket_a        2015-10-26T15:46:13.000Z
+shivanshu_bucket        2015-10-26T15:14:15.000Z
+Traceback (most recent call last):
+      File "bug0_test2.py", line 31, in <module>
+          b2 = conn_u2.create_bucket(b1.name);
+            File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 499, in create_bucket
+                response.status, response.reason, body)
+                boto.exception.S3CreateError: S3CreateError: 409 Conflict
+                <?xml version="1.0" encoding="UTF-8"?><Error><Code>BucketAlreadyExists</Code></Error>
+
+shivanshu@admin ~/gitcode/ceph_tests:
