@@ -1,0 +1,248 @@
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_b
+
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_b,keynum1>
+U1 bucket key: <Key: bucket_b,keynum10>
+U1 bucket key: <Key: bucket_b,keynum12>
+U1 bucket key: <Key: bucket_b,keynum13>
+U1 bucket key: <Key: bucket_b,keynum14>
+U1 bucket key: <Key: bucket_b,keynum2>
+U1 bucket key: <Key: bucket_b,keynum3>
+U1 bucket key: <Key: bucket_b,keynum4>
+U1 bucket key: <Key: bucket_b,keynum5>
+U1 bucket key: <Key: bucket_b,keynum6>
+U1 bucket key: <Key: bucket_b,keynum7>
+U1 bucket key: <Key: bucket_b,keynum8>
+U1 bucket key: <Key: bucket_b,keynum9>
+
+U2 tries to write to this bucket
+	Creating obj 12
+	Creating obj 13
+	Creating obj 14
+
+U2: Listing keys from U1 bucket to see its own objects
+bucket key: <Key: bucket_b,keynum1>
+bucket key: <Key: bucket_b,keynum10>
+bucket key: <Key: bucket_b,keynum12>
+bucket key: <Key: bucket_b,keynum13>
+bucket key: <Key: bucket_b,keynum14>
+bucket key: <Key: bucket_b,keynum2>
+bucket key: <Key: bucket_b,keynum3>
+bucket key: <Key: bucket_b,keynum4>
+bucket key: <Key: bucket_b,keynum5>
+bucket key: <Key: bucket_b,keynum6>
+bucket key: <Key: bucket_b,keynum7>
+bucket key: <Key: bucket_b,keynum8>
+bucket key: <Key: bucket_b,keynum9>
+
+U2 tries to fetch its own object:
+
+Traceback (most recent call last):
+    File "publicrw_bucket_list_put_not_get.py", line 88, in <module>
+    print "My object: " + m.get_contents_as_string()
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1689, in get_contents_as_string
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1578, in get_contents_to_file
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1418, in get_file
+    query_args=None)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1450, in _get_file_internal
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 322, in open
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 271, in open_read
+    self.resp.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 403 Forbidden
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>
+
+
+#########################################################
+
+
+ATTEMPTING TO GET OTHER USERS OBJECTS VIA OTHER TENANT
+======================================================
+
+
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_b
+
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_b,keynum1>
+U1 bucket key: <Key: bucket_b,keynum10>
+U1 bucket key: <Key: bucket_b,keynum12>
+U1 bucket key: <Key: bucket_b,keynum13>
+U1 bucket key: <Key: bucket_b,keynum14>
+U1 bucket key: <Key: bucket_b,keynum2>
+U1 bucket key: <Key: bucket_b,keynum3>
+U1 bucket key: <Key: bucket_b,keynum4>
+U1 bucket key: <Key: bucket_b,keynum5>
+U1 bucket key: <Key: bucket_b,keynum6>
+U1 bucket key: <Key: bucket_b,keynum7>
+U1 bucket key: <Key: bucket_b,keynum8>
+U1 bucket key: <Key: bucket_b,keynum9>
+
+U2 tries to write to this bucket
+	Creating obj 16
+	Creating obj 17
+
+U2: Listing keys from U1 bucket to see its own objects
+bucket key: <Key: bucket_b,keynum1>
+bucket key: <Key: bucket_b,keynum10>
+bucket key: <Key: bucket_b,keynum12>
+bucket key: <Key: bucket_b,keynum13>
+bucket key: <Key: bucket_b,keynum14>
+bucket key: <Key: bucket_b,keynum16>
+bucket key: <Key: bucket_b,keynum17>
+bucket key: <Key: bucket_b,keynum2>
+bucket key: <Key: bucket_b,keynum3>
+bucket key: <Key: bucket_b,keynum4>
+bucket key: <Key: bucket_b,keynum5>
+bucket key: <Key: bucket_b,keynum6>
+bucket key: <Key: bucket_b,keynum7>
+bucket key: <Key: bucket_b,keynum8>
+bucket key: <Key: bucket_b,keynum9>
+U2: Attempting to fetch objects of other user:
+
+Traceback (most recent call last):
+    File "publicrw_bucket_list_put_not_get.py", line 95, in <module>
+    print "Object " + str(i) + ": " + m.get_contents_as_string()
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1689, in get_contents_as_string
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1578, in get_contents_to_file
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1418, in get_file
+    query_args=None)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1450, in _get_file_internal
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 322, in open
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 271, in open_read
+    self.resp.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 403 Forbidden
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>
+
+
+
+=======================================================================
+
+
+ATTEMPTING TO GET OTHER USERS OBJECTS VIA SAME TENANT DIFF USER
+===============================================================
+
+
+
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_b
+
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_b,keynum1>
+U1 bucket key: <Key: bucket_b,keynum10>
+U1 bucket key: <Key: bucket_b,keynum12>
+U1 bucket key: <Key: bucket_b,keynum13>
+U1 bucket key: <Key: bucket_b,keynum14>
+U1 bucket key: <Key: bucket_b,keynum16>
+U1 bucket key: <Key: bucket_b,keynum17>
+U1 bucket key: <Key: bucket_b,keynum19>
+U1 bucket key: <Key: bucket_b,keynum2>
+U1 bucket key: <Key: bucket_b,keynum3>
+U1 bucket key: <Key: bucket_b,keynum4>
+U1 bucket key: <Key: bucket_b,keynum5>
+U1 bucket key: <Key: bucket_b,keynum6>
+U1 bucket key: <Key: bucket_b,keynum7>
+U1 bucket key: <Key: bucket_b,keynum8>
+U1 bucket key: <Key: bucket_b,keynum9>
+
+U2 tries to write to this bucket
+	Creating obj 20
+	Creating obj 21
+	Creating obj 22
+	Creating obj 23
+	Creating obj 24
+
+U2: Listing keys from U1 bucket to see its own objects
+bucket key: <Key: bucket_b,keynum1>
+bucket key: <Key: bucket_b,keynum10>
+bucket key: <Key: bucket_b,keynum12>
+bucket key: <Key: bucket_b,keynum13>
+bucket key: <Key: bucket_b,keynum14>
+bucket key: <Key: bucket_b,keynum16>
+bucket key: <Key: bucket_b,keynum17>
+bucket key: <Key: bucket_b,keynum19>
+bucket key: <Key: bucket_b,keynum2>
+bucket key: <Key: bucket_b,keynum20>
+bucket key: <Key: bucket_b,keynum21>
+bucket key: <Key: bucket_b,keynum22>
+bucket key: <Key: bucket_b,keynum23>
+bucket key: <Key: bucket_b,keynum24>
+bucket key: <Key: bucket_b,keynum3>
+bucket key: <Key: bucket_b,keynum4>
+bucket key: <Key: bucket_b,keynum5>
+bucket key: <Key: bucket_b,keynum6>
+bucket key: <Key: bucket_b,keynum7>
+bucket key: <Key: bucket_b,keynum8>
+bucket key: <Key: bucket_b,keynum9>
+
+U2 tries to fetch its own object:
+My object: Contents of object
+U2: Attempting to fetch objects of other user:
+Object 1: Contents of object
+Object 2: Contents of object
+Object 3: Contents of object
+Object 4: Contents of object
+Object 5: Contents of object
+Object 6: Contents of object
+Object 7: Contents of object
+Object 8: Contents of object
+Object 9: Contents of object
+Object 10: Contents of object
+
+Cleaning up...
+Attemting to list buckets for both users
+First user's buckets:
+Second user's buckets:

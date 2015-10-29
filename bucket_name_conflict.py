@@ -20,12 +20,12 @@ u1_access_key = '842f26b29ddd4331a5af8fc800ce04ca'
 u1_secret_key = 'b772c2bb2ad149fcb941d298e2dabfb5'
 
 ## UID goswami keystone
-##u2_access_key = 'cb92f272dc514e80acc782023c442c20'
-##u2_secret_key = 'd115d835aa2a4053a5d66bd93aea2046'
+u2_access_key = 'cb92f272dc514e80acc782023c442c20'
+u2_secret_key = 'd115d835aa2a4053a5d66bd93aea2046'
 
 ## UID reliance keystone
-u2_access_key = '911093f31862430b955a6cdea71fee2e'
-u2_secret_key = '31a3770da550495d99dcc065488e1351'
+##u2_access_key = '911093f31862430b955a6cdea71fee2e'
+##u2_secret_key = '31a3770da550495d99dcc065488e1351'
 ##'''
 
 conn_u1 = boto.connect_s3(
@@ -69,20 +69,15 @@ for i in range(1, 11):
     k3.set_contents_from_string(valv)
 
 
-'''
-print "\nSetting ACL..."
-##b1.set_acl('public-read')
-b1.set_acl('private');
+print "Attemting to list buckets for both users"
+print "First user's buckets:"
+for bucket in conn_u1.get_all_buckets():
+    print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
 
-b2 = conn_u2.get_bucket(b1.name);
-print "\nU2: Name of this bucket is {b2name}".format(b2name = b2.name)
-print "U2: Attempting to read objects from a private bucket:"
-m = Key(b2)
-for i in range(1, 11):
-    keyv = 'keynum' + str(i)
-    m.key = keyv
-    print "Object " + str(i) + ": " + m.get_contents_as_string()
-'''
+print "Second user's buckets:"
+for bucket in conn_u2.get_all_buckets():
+    print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
+
 ####################################################
 
 

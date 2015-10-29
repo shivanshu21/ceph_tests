@@ -6,7 +6,6 @@ from boto.s3.key import Key
 print "Making connections..."
 
 '''
-
 ## Local users
 u1_access_key = 'INDCMF1YDM0N785EKCBN'
 u1_secret_key = 'oxvVdSd1P3ICWlPyCehdco8h56OPqnyjtOtN52c4'
@@ -19,11 +18,11 @@ u2_secret_key = 'cKsEUeHUD5GZzfDLbzxHBp3MVw6K2mwYSDrfjaIB'
 u1_access_key = '842f26b29ddd4331a5af8fc800ce04ca'
 u1_secret_key = 'b772c2bb2ad149fcb941d298e2dabfb5'
 
-## UID goswami keystone
+## UID goswami keystone Same tenant as shivanshu
 ##u2_access_key = 'cb92f272dc514e80acc782023c442c20'
 ##u2_secret_key = 'd115d835aa2a4053a5d66bd93aea2046'
 
-## UID reliance keystone
+## UID reliance keystone Diff tenant
 u2_access_key = '911093f31862430b955a6cdea71fee2e'
 u2_secret_key = '31a3770da550495d99dcc065488e1351'
 ##'''
@@ -58,18 +57,6 @@ for i in range(1, 11):
     k.key = keyv
     k.set_contents_from_string(valv)
 
-print "\nCreating bucket of same name for user3..."
-b3 = conn_u2.create_bucket('bucket_a')
-k3 = Key(b3)
-for i in range(1, 11):
-    print "\tCreating obj %d" % (i)
-    keyv = 'keynum' + str(i)
-    valv = 'Contents of object'
-    k3.key = keyv
-    k3.set_contents_from_string(valv)
-
-
-'''
 print "\nSetting ACL..."
 ##b1.set_acl('public-read')
 b1.set_acl('private');
@@ -82,7 +69,6 @@ for i in range(1, 11):
     keyv = 'keynum' + str(i)
     m.key = keyv
     print "Object " + str(i) + ": " + m.get_contents_as_string()
-'''
 ####################################################
 
 

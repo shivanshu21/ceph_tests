@@ -1,0 +1,99 @@
+shivanshu@admin ~/gitcode/ceph_tests: python publicread_bucket_list_not_get.py
+Making connections...
+
+Creating and populating the bucket for user1...
+Creating obj 1
+Creating obj 2
+Creating obj 3
+Creating obj 4
+Creating obj 5
+Creating obj 6
+Creating obj 7
+Creating obj 8
+Creating obj 9
+Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_b
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_b,keynum1>
+U1 bucket key: <Key: bucket_b,keynum10>
+U1 bucket key: <Key: bucket_b,keynum2>
+U1 bucket key: <Key: bucket_b,keynum3>
+U1 bucket key: <Key: bucket_b,keynum4>
+U1 bucket key: <Key: bucket_b,keynum5>
+U1 bucket key: <Key: bucket_b,keynum6>
+U1 bucket key: <Key: bucket_b,keynum7>
+U1 bucket key: <Key: bucket_b,keynum8>
+U1 bucket key: <Key: bucket_b,keynum9>
+U2: Attempting to read objects from a private bucket:
+Traceback (most recent call last):
+    File "publicread_bucket_list_not_get.py", line 78, in <module>
+    print "Object " + str(i) + ": " + m.get_contents_as_string()
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1689, in get_contents_as_string
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1578, in get_contents_to_file
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1418, in get_file
+    query_args=None)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1450, in _get_file_internal
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 322, in open
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 271, in open_read
+    self.resp.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 403 Forbidden
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>
+    shivanshu@admin ~/gitcode/ceph_tests: 
+
+##################################################
+
+WITH USER UNDER SAME TENANT
+===========================
+
+
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_b
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_b,keynum1>
+U1 bucket key: <Key: bucket_b,keynum10>
+U1 bucket key: <Key: bucket_b,keynum2>
+U1 bucket key: <Key: bucket_b,keynum3>
+U1 bucket key: <Key: bucket_b,keynum4>
+U1 bucket key: <Key: bucket_b,keynum5>
+U1 bucket key: <Key: bucket_b,keynum6>
+U1 bucket key: <Key: bucket_b,keynum7>
+U1 bucket key: <Key: bucket_b,keynum8>
+U1 bucket key: <Key: bucket_b,keynum9>
+U2: Attempting to read objects from a private bucket:
+Object 1: Contents of object
+Object 2: Contents of object
+Object 3: Contents of object
+Object 4: Contents of object
+Object 5: Contents of object
+Object 6: Contents of object
+Object 7: Contents of object
+Object 8: Contents of object
+Object 9: Contents of object
+Object 10: Contents of object
+
+Cleaning up...
+Attemting to list buckets for both users
+First user's buckets:
+Second user's buckets:

@@ -1,14 +1,65 @@
-shivanshu@admin ~/gitcode/ceph_tests: python bug0_test2.py
+shivanshu@admin ~/gitcode/ceph_tests: python objects.py
+Making connections...
 
-Created one bucket:
-bucket_a        2015-10-26T15:46:13.000Z
-shivanshu_bucket        2015-10-26T15:14:15.000Z
-Traceback (most recent call last):
-      File "bug0_test2.py", line 31, in <module>
-          b2 = conn_u2.create_bucket(b1.name);
-            File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 499, in create_bucket
-                response.status, response.reason, body)
-                boto.exception.S3CreateError: S3CreateError: 409 Conflict
-                <?xml version="1.0" encoding="UTF-8"?><Error><Code>BucketAlreadyExists</Code></Error>
+Creating and populating the bucket for user1...
+        Creating obj 1
+        Creating obj 2
+        Creating obj 3
+        Creating obj 4
+        Creating obj 5
+        Creating obj 6
+        Creating obj 7
+        Creating obj 8
+        Creating obj 9
+        Creating obj 10
 
+        Creating bucket of same name for user3...
+        Traceback (most recent call last):
+        File "objects.py", line 62, in <module>
+        b3 = conn_u2.create_bucket('bucket_a')
+        File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 499, in create_bucket
+        response.status, response.reason, body)
+        boto.exception.S3CreateError: S3CreateError: 409 Conflict
+        <?xml version="1.0" encoding="UTF-8"?><Error><Code>BucketAlreadyExists</Code></Error>
 shivanshu@admin ~/gitcode/ceph_tests:
+
+###############################
+
+USER UNDER SAME TENANT
+======================
+
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Creating bucket of same name for user3...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+Attemting to list buckets for both users
+First user's buckets:
+bucket_a	2015-10-28T12:57:04.000Z
+Second user's buckets:
+bucket_a	2015-10-28T12:57:04.000Z
+
+Cleaning up...
+Attemting to list buckets for both users
+First user's buckets:
+Second user's buckets:

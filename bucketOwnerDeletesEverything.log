@@ -1,0 +1,248 @@
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_d
+
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_d,keynum1>
+U1 bucket key: <Key: bucket_d,keynum10>
+U1 bucket key: <Key: bucket_d,keynum2>
+U1 bucket key: <Key: bucket_d,keynum3>
+U1 bucket key: <Key: bucket_d,keynum4>
+U1 bucket key: <Key: bucket_d,keynum5>
+U1 bucket key: <Key: bucket_d,keynum6>
+U1 bucket key: <Key: bucket_d,keynum7>
+U1 bucket key: <Key: bucket_d,keynum8>
+U1 bucket key: <Key: bucket_d,keynum9>
+
+U2: Trying to write to this bucket
+	Creating obj 21
+	Creating obj 22
+	Creating obj 23
+	Creating obj 24
+	Creating obj 25
+	Creating obj 26
+	Creating obj 27
+	Creating obj 28
+	Creating obj 29
+	Creating obj 30
+
+U2: Listing keys from U1 bucket to see its own objects
+bucket key: <Key: bucket_d,keynum1>
+bucket key: <Key: bucket_d,keynum10>
+bucket key: <Key: bucket_d,keynum2>
+bucket key: <Key: bucket_d,keynum21>
+bucket key: <Key: bucket_d,keynum22>
+bucket key: <Key: bucket_d,keynum23>
+bucket key: <Key: bucket_d,keynum24>
+bucket key: <Key: bucket_d,keynum25>
+bucket key: <Key: bucket_d,keynum26>
+bucket key: <Key: bucket_d,keynum27>
+bucket key: <Key: bucket_d,keynum28>
+bucket key: <Key: bucket_d,keynum29>
+bucket key: <Key: bucket_d,keynum3>
+bucket key: <Key: bucket_d,keynum30>
+bucket key: <Key: bucket_d,keynum4>
+bucket key: <Key: bucket_d,keynum5>
+bucket key: <Key: bucket_d,keynum6>
+bucket key: <Key: bucket_d,keynum7>
+bucket key: <Key: bucket_d,keynum8>
+bucket key: <Key: bucket_d,keynum9>
+
+U2 tries to fetch its own object:
+My Object 21: Contents of object21 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 22: Contents of object22 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 23: Contents of object23 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 24: Contents of object24 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 25: Contents of object25 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 26: Contents of object26 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 27: Contents of object27 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 28: Contents of object28 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 29: Contents of object29 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 30: Contents of object30 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+
+U2: Attemping to delete own object
+
+U2: Listing keys from U1 bucket after delete
+U1 bucket key: <Key: bucket_d,keynum1>
+U1 bucket key: <Key: bucket_d,keynum10>
+U1 bucket key: <Key: bucket_d,keynum2>
+U1 bucket key: <Key: bucket_d,keynum21>
+U1 bucket key: <Key: bucket_d,keynum22>
+U1 bucket key: <Key: bucket_d,keynum23>
+U1 bucket key: <Key: bucket_d,keynum24>
+U1 bucket key: <Key: bucket_d,keynum25>
+U1 bucket key: <Key: bucket_d,keynum26>
+U1 bucket key: <Key: bucket_d,keynum27>
+U1 bucket key: <Key: bucket_d,keynum28>
+U1 bucket key: <Key: bucket_d,keynum3>
+U1 bucket key: <Key: bucket_d,keynum30>
+U1 bucket key: <Key: bucket_d,keynum4>
+U1 bucket key: <Key: bucket_d,keynum5>
+U1 bucket key: <Key: bucket_d,keynum6>
+U1 bucket key: <Key: bucket_d,keynum7>
+U1 bucket key: <Key: bucket_d,keynum8>
+U1 bucket key: <Key: bucket_d,keynum9>
+U2: Attempting to fetch objects of other user:
+
+
+Traceback (most recent call last):
+    File "deletefail.py", line 102, in <module>
+    print "Object " + str(i) + ": " + m.get_contents_as_string()
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1689, in get_contents_as_string
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1578, in get_contents_to_file
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1418, in get_file
+    query_args=None)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1450, in _get_file_internal
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 322, in open
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 271, in open_read
+    self.resp.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 403 Forbidden
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>
+
+
+==================================================================
+
+
+
+TRYING TO FETCH OWN OBJECT
+==========================
+
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+U2: Name of this bucket is bucket_e
+
+U2: Listing keys from U1 bucket
+U1 bucket key: <Key: bucket_e,keynum1>
+U1 bucket key: <Key: bucket_e,keynum10>
+U1 bucket key: <Key: bucket_e,keynum2>
+U1 bucket key: <Key: bucket_e,keynum3>
+U1 bucket key: <Key: bucket_e,keynum4>
+U1 bucket key: <Key: bucket_e,keynum5>
+U1 bucket key: <Key: bucket_e,keynum6>
+U1 bucket key: <Key: bucket_e,keynum7>
+U1 bucket key: <Key: bucket_e,keynum8>
+U1 bucket key: <Key: bucket_e,keynum9>
+
+U2: Trying to write to this bucket
+	Creating obj 21
+	Creating obj 22
+	Creating obj 23
+	Creating obj 24
+	Creating obj 25
+	Creating obj 26
+	Creating obj 27
+	Creating obj 28
+	Creating obj 29
+	Creating obj 30
+
+U2: Listing keys from U1 bucket to see its own objects
+bucket key: <Key: bucket_e,keynum1>
+bucket key: <Key: bucket_e,keynum10>
+bucket key: <Key: bucket_e,keynum2>
+bucket key: <Key: bucket_e,keynum21>
+bucket key: <Key: bucket_e,keynum22>
+bucket key: <Key: bucket_e,keynum23>
+bucket key: <Key: bucket_e,keynum24>
+bucket key: <Key: bucket_e,keynum25>
+bucket key: <Key: bucket_e,keynum26>
+bucket key: <Key: bucket_e,keynum27>
+bucket key: <Key: bucket_e,keynum28>
+bucket key: <Key: bucket_e,keynum29>
+bucket key: <Key: bucket_e,keynum3>
+bucket key: <Key: bucket_e,keynum30>
+bucket key: <Key: bucket_e,keynum4>
+bucket key: <Key: bucket_e,keynum5>
+bucket key: <Key: bucket_e,keynum6>
+bucket key: <Key: bucket_e,keynum7>
+bucket key: <Key: bucket_e,keynum8>
+bucket key: <Key: bucket_e,keynum9>
+
+U2 tries to fetch its own object:
+My Object 21: Contents of object21 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 22: Contents of object22 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 23: Contents of object23 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 24: Contents of object24 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 25: Contents of object25 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 26: Contents of object26 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 27: Contents of object27 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 28: Contents of object28 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 29: Contents of object29 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+My Object 30: Contents of object30 . ACL: <Policy: roottenant (owner) = FULL_CONTROL>
+
+U2: Attemping to delete own object
+
+U2: Listing keys from U1 bucket after delete
+U1 bucket key: <Key: bucket_e,keynum1>
+U1 bucket key: <Key: bucket_e,keynum10>
+U1 bucket key: <Key: bucket_e,keynum2>
+U1 bucket key: <Key: bucket_e,keynum21>
+U1 bucket key: <Key: bucket_e,keynum22>
+U1 bucket key: <Key: bucket_e,keynum23>
+U1 bucket key: <Key: bucket_e,keynum24>
+U1 bucket key: <Key: bucket_e,keynum25>
+U1 bucket key: <Key: bucket_e,keynum26>
+U1 bucket key: <Key: bucket_e,keynum27>
+U1 bucket key: <Key: bucket_e,keynum28>
+U1 bucket key: <Key: bucket_e,keynum3>
+U1 bucket key: <Key: bucket_e,keynum30>
+U1 bucket key: <Key: bucket_e,keynum4>
+U1 bucket key: <Key: bucket_e,keynum5>
+U1 bucket key: <Key: bucket_e,keynum6>
+U1 bucket key: <Key: bucket_e,keynum7>
+U1 bucket key: <Key: bucket_e,keynum8>
+U1 bucket key: <Key: bucket_e,keynum9>
+
+U2: Attemping to get own object
+My Object: Contents of object28
+
+U2: Attempting to fetch objects of other user:
+Traceback (most recent call last):
+    File "deletefail.py", line 107, in <module>
+    print "Object " + str(i) + ": " + m.get_contents_as_string()
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1689, in get_contents_as_string
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1578, in get_contents_to_file
+    response_headers=response_headers)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1418, in get_file
+    query_args=None)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 1450, in _get_file_internal
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 322, in open
+    override_num_retries=override_num_retries)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/key.py", line 271, in open_read
+    self.resp.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 403 Forbidden
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>
+
