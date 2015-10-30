@@ -1,0 +1,38 @@
+Making connections...
+
+Creating and populating the bucket for user1...
+	Creating obj 1
+	Creating obj 2
+	Creating obj 3
+	Creating obj 4
+	Creating obj 5
+	Creating obj 6
+	Creating obj 7
+	Creating obj 8
+	Creating obj 9
+	Creating obj 10
+
+Setting ACL...
+
+Trying to get public-read Bucket which belongs to user1
+U2: Name of this bucket is bucket_a
+Listing objects in this bucket:
+<Key: bucket_a,keynum1>
+<Key: bucket_a,keynum10>
+<Key: bucket_a,keynum2>
+<Key: bucket_a,keynum3>
+<Key: bucket_a,keynum4>
+<Key: bucket_a,keynum5>
+<Key: bucket_a,keynum6>
+<Key: bucket_a,keynum7>
+<Key: bucket_a,keynum8>
+<Key: bucket_a,keynum9>
+
+Trying to GET private object:
+Unexpected error:  (<class 'boto.exception.S3ResponseError'>, S3ResponseError: 403 Forbidden
+<?xml version="1.0" encoding="UTF-8"?><Error><Code>AccessDenied</Code></Error>, <traceback object at 0x7f94c0e27290>)
+
+Cleaning up...
+Attemting to list buckets for both users
+First user's buckets:
+Second user's buckets:

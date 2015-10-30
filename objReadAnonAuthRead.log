@@ -1,0 +1,18 @@
+shivanshu@admin ~/gitcode/ceph_tests: python objReadAnonAuthRead.py 
+Making connections...
+
+Creating and populating the bucket for user1...
+Creating obj 1
+Creating obj 2
+Creating obj 3
+Creating obj 4
+Creating obj 5
+Creating obj 6
+Creating obj 7
+Creating obj 8
+Creating obj 9
+Creating obj 10
+
+Setting ACL...
+The URL is: http://127.0.0.1:7480/bucket_b/keynum5?Signature=ORLgnRtMqaWOOLIOjcCHo6hM%2Fyo%3D&Expires=1446142989&AWSAccessKeyId=842f26b29ddd4331a5af8fc800ce04ca
+
