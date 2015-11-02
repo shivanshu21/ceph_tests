@@ -1,0 +1,64 @@
+Making connections...
+
+Creating and populating the bucket for user1...
+Uploading chunk: 0
+Uploading chunk: 1
+Uploading chunk: 2
+Uploading chunk: 3
+Uploading chunk: 4
+Uploading chunk: 5
+Uploading chunk: 6
+Uploading chunk: 7
+Uploading chunk: 8
+Uploading chunk: 9
+Uploading chunk: 10
+Uploading chunk: 11
+Uploading chunk: 12
+Uploading chunk: 13
+Uploading chunk: 14
+Uploading chunk: 15
+Uploading chunk: 16
+Uploading chunk: 17
+Uploading chunk: 18
+Uploading chunk: 19
+Uploading chunk: 20
+Uploading chunk: 21
+Uploading chunk: 22
+Uploading chunk: 23
+Uploading chunk: 24
+Uploading chunk: 25
+Uploading chunk: 26
+Uploading chunk: 27
+Uploading chunk: 28
+Uploading chunk: 29
+Uploading chunk: 30
+Uploading chunk: 31
+Uploading chunk: 32
+Uploading chunk: 33
+Uploading chunk: 34
+Uploading chunk: 35
+Uploading chunk: 36
+Uploading chunk: 37
+Uploading chunk: 38
+Uploading chunk: 39
+Uploading chunk: 40
+Uploading chunk: 41
+Uploading chunk: 42
+Uploading chunk: 43
+Uploading chunk: 44
+Uploading chunk: 45
+Uploading chunk: 46
+Uploading chunk: 47
+Uploading chunk: 48
+Uploading chunk: 49
+Uploading chunk: 50
+Uploading chunk: 51
+Uploading chunk: 52
+Uploading chunk: 53
+Unexpected error:  (<class 'boto.exception.S3ResponseError'>, S3ResponseError: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?><Error><Code>EntityTooSmall</Code></Error>, <traceback object at 0x7f95d9eea2d8>)
+
+Cleaning up...
+Attemting to list buckets for both users
+First user's buckets:
+Second user's buckets:

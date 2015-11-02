@@ -2,6 +2,8 @@ import boto
 import boto.s3.connection
 import sys
 from boto.s3.key import Key
+import math, os
+from filechunkio import FileChunkIO
 
 ###################### INIT ########################
 RADOSHOST = '127.0.0.1'
@@ -53,29 +55,22 @@ conn_u2 = boto.connect_s3(
 ################## TEST CASE #######################
 print "\nCreating and populating the bucket for user1..."
 b1 = conn_u1.create_bucket(BUCKETNAME)
-k = Key(b1)
-for i in range(1, 11):
-    print "\tCreating obj %d" % (i)
-    keyv = 'keynum' + str(i)
-    valv = 'Contents of object' + str(i)
-    k.key = keyv
-    k.set_contents_from_string(valv)
-    k.set_acl('public-read')
-
-print "\nSetting ACL..."
-b1.set_acl('private')
-
-mbuck = conn_u2.create_bucket('mybuck')
-mbuck.set_acl('public-read-write')
+source_path = '/boot/initrd.img-3.16.0-30-generic'
+source_size = os.stat(source_path).st_size
+chunk_size = 524288 ## 500 KB
+chunk_count = int(math.ceil(source_size / float(chunk_size)))
 
 try:
-    print "Trying to get a private bucket which belongs to user1"
-    b2 = conn_u2.get_bucket(b1.name);
-    print "\nU2: Name of this bucket is {b2name}".format(b2name = b2.name)
-    m = Key(b2);
-    m.key = 'keynum5'
-    print "U2: Copying key from user1 bucket to mine"
-    m.copy('mybuck', 'copiedkey')
+    mp = b1.initiate_multipart_upload(os.path.basename(source_path))
+
+    for i in range(chunk_count):
+        print "Uploading chunk: " + str(i)
+        offset = chunk_size * i
+        bytes = min(chunk_size, source_size - offset)
+        with FileChunkIO(source_path, 'r', offset=offset, bytes=bytes) as fp:
+            mp.upload_part_from_file(fp, part_num=i + 1)
+
+    mp.complete_upload()
 except:
     print "Unexpected error: ", sys.exc_info()
 

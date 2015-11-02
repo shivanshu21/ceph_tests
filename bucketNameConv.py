@@ -6,7 +6,11 @@ from boto.s3.key import Key
 ###################### INIT ########################
 RADOSHOST = '127.0.0.1'
 RADOSPORT = 7480
-BUCKETNAME = 'bucket_a'
+##BUCKETNAME = '....bucket_a'
+##BUCKETNAME = 'bucket_a.b.'
+##BUCKETNAME = 'AAAAABBBBBCCCCCDDDDDEEEEEFFFFF'
+##BUCKETNAME = 'a.a.a.a.ab.b.b.b.bc.c.c.c.cd.d.d.d.de.e.e.e.e'
+BUCKETNAME = 'bucket_a/b'
 
 print "Making connections..."
 
@@ -51,39 +55,20 @@ conn_u2 = boto.connect_s3(
 
 
 ################## TEST CASE #######################
-print "\nCreating and populating the bucket for user1..."
+print "\nCreating bucket " + BUCKETNAME +" for user1..."
 b1 = conn_u1.create_bucket(BUCKETNAME)
-k = Key(b1)
-for i in range(1, 11):
-    print "\tCreating obj %d" % (i)
-    keyv = 'keynum' + str(i)
-    valv = 'Contents of object' + str(i)
-    k.key = keyv
-    k.set_contents_from_string(valv)
-    k.set_acl('public-read')
+print "Attemting to list buckets"
+print "User1's buckets:"
+for bucket in conn_u1.get_all_buckets():
+    print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
 
-print "\nSetting ACL..."
-b1.set_acl('private')
-
-mbuck = conn_u2.create_bucket('mybuck')
-mbuck.set_acl('public-read-write')
-
-try:
-    print "Trying to get a private bucket which belongs to user1"
-    b2 = conn_u2.get_bucket(b1.name);
-    print "\nU2: Name of this bucket is {b2name}".format(b2name = b2.name)
-    m = Key(b2);
-    m.key = 'keynum5'
-    print "U2: Copying key from user1 bucket to mine"
-    m.copy('mybuck', 'copiedkey')
-except:
-    print "Unexpected error: ", sys.exc_info()
 
 ####################################################
 
 
 #################### CLEANUP #######################
 print "\nCleaning up..."
+'''
 for bkt in conn_u1.get_all_buckets():
     for k in bkt.list():
         k.delete()
@@ -102,5 +87,5 @@ for bucket in conn_u1.get_all_buckets():
 print "Second user's buckets:"
 for bucket in conn_u2.get_all_buckets():
     print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
-
+'''
 ####################################################

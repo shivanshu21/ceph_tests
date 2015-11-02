@@ -63,19 +63,27 @@ for i in range(1, 11):
     k.set_acl('public-read')
 
 print "\nSetting ACL..."
-b1.set_acl('private')
-
-mbuck = conn_u2.create_bucket('mybuck')
-mbuck.set_acl('public-read-write')
+b1.set_acl('public-read-write')
 
 try:
-    print "Trying to get a private bucket which belongs to user1"
-    b2 = conn_u2.get_bucket(b1.name);
-    print "\nU2: Name of this bucket is {b2name}".format(b2name = b2.name)
-    m = Key(b2);
-    m.key = 'keynum5'
-    print "U2: Copying key from user1 bucket to mine"
-    m.copy('mybuck', 'copiedkey')
+    print "\nU1: Trying to delete existing object"
+    k.key = 'keynum1'
+    k.delete()
+
+    print "\nListing bucket contents"
+    for k in b1.list():
+        print "Object: " + str(k)
+
+    print "\nU1: Trying to delete non existing object"
+    for i in range(200, 210):
+        k.key = 'keynum' + str(i)
+        print "Deleting keynum" + str(i)
+        k.delete()
+
+    print "\nListing bucket contents"
+    for k in b1.list():
+        print "Object: " + str(k)
+
 except:
     print "Unexpected error: ", sys.exc_info()
 

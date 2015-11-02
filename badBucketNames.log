@@ -1,0 +1,45 @@
+shivanshu@admin ~/gitcode/ceph_tests: python bucketNameConv.py 
+Making connections...
+
+Creating bucket AAAAABBBBBCCCCCDDDDDEEEEEFFFFF for user1...
+Traceback (most recent call last):
+    File "bucketNameConv.py", line 57, in <module>
+    b1 = conn_u1.create_bucket(BUCKETNAME)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 482, in create_bucket
+    check_lowercase_bucketname(bucket_name)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 58, in check_lowercase_bucketname
+    raise BotoClientError("Bucket names cannot contain upper-case " \
+            boto.exception.BotoClientError: BotoClientError: Bucket names cannot contain upper-case characters when using either the sub-domain or virtual hosting calling format.
+            shivanshu@admin ~/gitcode/ceph_tests: 
+
+
+=================================================
+
+shivanshu@admin ~/gitcode/ceph_tests: python bucketNameConv.py 
+Making connections...
+
+Creating bucket a.a.a.a.ab.b.b.b.bc.c.c.c.cd.d.d.d.de.e.e.e.e for user1...
+Attemting to list buckets
+User1's buckets:
+77bucket_a      2015-11-02T11:04:03.000Z
+a.a.a.a.ab.b.b.b.bc.c.c.c.cd.d.d.d.de.e.e.e.e   2015-11-02T11:08:42.000Z
+bucket_a.b      2015-11-02T11:05:36.000Z
+bucket_a.b.     2015-11-02T11:05:52.000Z
+
+Cleaning up...
+
+=================================================
+
+    shivanshu@admin ~/gitcode/ceph_tests: python bucketNameConv.py 
+    Making connections...
+
+    Creating bucket bucket_a/b for user1...
+    Traceback (most recent call last):
+    File "bucketNameConv.py", line 59, in <module>
+    b1 = conn_u1.create_bucket(BUCKETNAME)
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 504, in create_bucket
+    response.status, response.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 404 Not Found
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>NoSuchBucket</Code></Error>
+    shivanshu@admin ~/gitcode/ceph_tests: 
+

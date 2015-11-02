@@ -1,0 +1,35 @@
+Making connections...
+
+Creating and populating the bucket for user1...
+
+U1: Trying list all buckets for U1
+
+Listing all buckets for user1
+Name: buck_b
+Name: buck_c
+Name: buck_d
+Name: buck_e
+Name: buck_f
+Name: bucket_a
+
+Listing bucket contents
+Object: <Key: bucket_a,keynum1>
+Object: <Key: bucket_a,keynum10>
+Object: <Key: bucket_a,keynum2>
+Object: <Key: bucket_a,keynum3>
+Object: <Key: bucket_a,keynum4>
+Object: <Key: bucket_a,keynum5>
+Object: <Key: bucket_a,keynum6>
+Object: <Key: bucket_a,keynum7>
+Object: <Key: bucket_a,keynum8>
+Object: <Key: bucket_a,keynum9>
+
+Cleaning up...
+Traceback (most recent call last):
+    File "listBuckets.py", line 74, in <module>
+    conn_u1.delete_bucket('nonexistbuck')
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 524, in delete_bucket
+    response.status, response.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 404 Not Found
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>NoSuchBucket</Code></Error>
+
