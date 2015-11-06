@@ -26,7 +26,6 @@ user_profiles = [
         {'access': '842f26b29ddd4331a5af8fc800ce04ca', 'secret': 'b772c2bb2ad149fcb941d298e2dabfb5'},         ##admintenant user1
         {'access': 'cb92f272dc514e80acc782023c442c20', 'secret': 'd115d835aa2a4053a5d66bd93aea2046'},         ##admintenant user2
         {'access': '911093f31862430b955a6cdea71fee2e', 'secret': '31a3770da550495d99dcc065488e1351'},         ##roottenant  user1
-        {'access': 'AKIAIWKVC4L3FOWJ76TQ'            , 'secret': '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'}, ##AWS ShivanshuG
     ]
 
 ####################################################
