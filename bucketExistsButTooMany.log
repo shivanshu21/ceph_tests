@@ -1,0 +1,13 @@
+Total number of buckets for the user: 1000
+Already have this bucket
+
+Traceback (most recent call last):
+    File "multipart_upload.py", line 105, in <module>
+    dsslib.callTest(bucketMaxNumber(), "Thousand bucket creation")
+    File "multipart_upload.py", line 20, in bucketMaxNumber
+    obj.create_bucket('brandnewbucket')
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 504, in create_bucket
+    response.status, response.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 400 Bad Request
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>TooManyBuckets</Code></Error>
+

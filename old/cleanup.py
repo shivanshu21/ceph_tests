@@ -1,5 +1,6 @@
 import boto
 import boto.s3.connection
+import re
 import sys
 from boto.s3.key import Key
 
@@ -53,15 +54,22 @@ conn_u2 = boto.connect_s3(
 
 #################### CLEANUP #######################
 print "\nCleaning up..."
+
+print "Total number of buckets for the user: " + str(len(conn_u1.get_all_buckets()))
 for bkt in conn_u1.get_all_buckets():
-    for k in bkt.list():
-        k.delete()
-    conn_u1.delete_bucket(bkt.name)
+    pattern = re.compile('brand*')
+    if pattern.match(bkt.name):
+        for k in bkt.list():
+            k.delete()
+        conn_u1.delete_bucket(bkt.name)
+print "Total number of buckets for the user: " + str(len(conn_u1.get_all_buckets()))
 
 for bkt in conn_u2.get_all_buckets():
-    for k in bkt.list():
-        k.delete()
-    conn_u2.delete_bucket(bkt.name)
+    pattern = re.compile('brand*')
+    if pattern.match(bkt.name):
+        for k in bkt.list():
+            k.delete()
+        conn_u2.delete_bucket(bkt.name)
 
 print "Attemting to list buckets for both users"
 print "First user's buckets:"
