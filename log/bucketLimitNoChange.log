@@ -1,0 +1,134 @@
+shivanshu@admin ~/gitcode/ceph_tests: radosgw-admin user info --uid=ee7829a843b64655acb5d3233774c40a
+2015-11-20 19:29:59.285558 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afed80 obj=.rgw.root:default.region state=0x464ffa0 s->prefetch_data=0
+2015-11-20 19:29:59.285592 7ff2a15e1700  2 RGWDataChangesLog::ChangesRenewThread: start
+2015-11-20 19:29:59.286717 7ff2b19df840 20 get_obj_state: s->obj_tag was set empty
+2015-11-20 19:29:59.286732 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afed80 obj=.rgw.root:default.region state=0x464ffa0 s->prefetch_data=0
+2015-11-20 19:29:59.286736 7ff2b19df840 20 rados->read ofs=0 len=524288
+2015-11-20 19:29:59.287164 7ff2b19df840 20 rados->read r=0 bl.length=17
+2015-11-20 19:29:59.287204 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afed80 obj=.rgw.root:region_info.default state=0x464ff70 s->prefetch_data=
+0
+2015-11-20 19:29:59.287599 7ff2b19df840 20 get_obj_state: s->obj_tag was set empty
+2015-11-20 19:29:59.287608 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afed80 obj=.rgw.root:region_info.default state=0x464ff70 s->prefetch_data=
+0
+2015-11-20 19:29:59.287611 7ff2b19df840 20 rados->read ofs=0 len=524288
+2015-11-20 19:29:59.287963 7ff2b19df840 20 rados->read r=0 bl.length=153
+2015-11-20 19:29:59.287999 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afef20 obj=.rgw.root:zone_info.default state=0x464ff70 s->prefetch_data=0
+2015-11-20 19:29:59.288486 7ff2b19df840 20 get_obj_state: s->obj_tag was set empty
+2015-11-20 19:29:59.288496 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afef20 obj=.rgw.root:zone_info.default state=0x464ff70 s->prefetch_data=0
+2015-11-20 19:29:59.288499 7ff2b19df840 20 rados->read ofs=0 len=524288
+2015-11-20 19:29:59.288845 7ff2b19df840 20 rados->read r=0 bl.length=678
+2015-11-20 19:29:59.288871 7ff2b19df840  2 zone default is master
+2015-11-20 19:29:59.288890 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afef20 obj=.rgw.root:region_map state=0x464ff70 s->prefetch_data=0
+2015-11-20 19:29:59.536661 7ff2b19df840 20 add_watcher() i=0
+2015-11-20 19:29:59.755763 7ff2b19df840 20 add_watcher() i=1
+2015-11-20 19:29:59.956010 7ff2b19df840 20 add_watcher() i=2
+2015-11-20 19:30:00.208986 7ff2b19df840 20 add_watcher() i=3
+2015-11-20 19:30:00.494379 7ff2b19df840 20 add_watcher() i=4
+2015-11-20 19:30:00.758747 7ff2b19df840 20 add_watcher() i=5
+2015-11-20 19:30:00.966966 7ff2b19df840 20 add_watcher() i=6
+2015-11-20 19:30:01.176122 7ff2b19df840 20 add_watcher() i=7
+2015-11-20 19:30:01.176132 7ff2b19df840  2 all 8 watchers are set, enabling cache
+2015-11-20 19:30:01.176165 7ff2b19df840 20 init_complete bucket index max shards: 0
+2015-11-20 19:30:01.176189 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afeed0 obj=.users.uid:ee7829a843b64655acb5d3233774c40a state=0x4666a00 s->prefetch_data=0
+2015-11-20 19:30:01.176194 7ff2b19df840 10 cache get: name=.users.uid+ee7829a843b64655acb5d3233774c40a : miss
+2015-11-20 19:30:01.177103 7ff2b19df840 10 cache put: name=.users.uid+ee7829a843b64655acb5d3233774c40a
+2015-11-20 19:30:01.177112 7ff2b19df840 10 adding .users.uid+ee7829a843b64655acb5d3233774c40a to cache LRU end
+    2015-11-20 19:30:01.177117 7ff2b19df840 20 get_obj_state: s->obj_tag was set empty
+2015-11-20 19:30:01.177121 7ff2b19df840 10 cache get: name=.users.uid+ee7829a843b64655acb5d3233774c40a : type miss (requested=17, cached=22)
+    2015-11-20 19:30:01.177125 7ff2b19df840 20 get_obj_state: rctx=0x7ffcc6afeed0 obj=.users.uid:ee7829a843b64655acb5d3233774c40a state=0x4666a00 s->prefetch_data=0
+    2015-11-20 19:30:01.177159 7ff2b19df840 20 rados->read ofs=0 len=524288
+    2015-11-20 19:30:01.177682 7ff2b19df840 20 rados->read r=0 bl.length=209
+    2015-11-20 19:30:01.177693 7ff2b19df840 10 cache put: name=.users.uid+ee7829a843b64655acb5d3233774c40a
+    2015-11-20 19:30:01.177695 7ff2b19df840 10 moving .users.uid+ee7829a843b64655acb5d3233774c40a to cache LRU end
+{   
+    "user_id": "ee7829a843b64655acb5d3233774c40a",
+        "display_name": "tenant800",
+        "email": "",
+        "suspended": 0,
+        "max_buckets": 1000, <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        "auid": 0,
+        "subusers": [],
+        "keys": [],
+        "swift_keys": [],
+        "caps": [],
+        "op_mask": "read, write, delete",
+        "default_placement": "",
+        "placement_tags": [],
+        "bucket_quota": {
+            "enabled": false,
+            "max_size_kb": -1,
+            "max_objects": -1
+        },
+        "user_quota": {
+            "enabled": false,
+            "max_size_kb": -1,
+            "max_objects": -1
+        },
+        "temp_url_keys": []
+}
+
+
+
+===================================================================
+
+
+radosgw-admin user modify --uid=ee7829a843b64655acb5d3233774c40a --max_buckets 1010
+
+2015-11-20 19:33:36.601883 7fe560916700 10 cache put: name=.users.uid+ee7829a843b64655acb5d3233774c40a
+2015-11-20 19:33:36.601887 7fe560916700 10 moving .users.uid+ee7829a843b64655acb5d3233774c40a to cache LRU end
+{   
+    "user_id": "ee7829a843b64655acb5d3233774c40a",
+    "display_name": "tenant800",
+    "email": "",
+    "suspended": 0,
+    "max_buckets": 1010,
+    "auid": 0,
+    "subusers": [],
+    "keys": [],
+    "swift_keys": [],
+    "caps": [],
+    "op_mask": "read, write, delete",
+    "default_placement": "",
+    "placement_tags": [],
+    "bucket_quota": {
+        "enabled": false,
+        "max_size_kb": -1,
+        "max_objects": -1
+    },
+    "user_quota": {
+        "enabled": false,
+        "max_size_kb": -1,
+        "max_objects": -1
+    },
+    "temp_url_keys": []
+}
+
+=====================================================================
+
+
+shivanshu@admin ~/gitcode/ceph_tests: python listBuckets.py 
+Total number of buckets for user800: 1000
+Increased bucket capacity per user. Now trying to create buckets
+Creating rjil800bucket20001
+Creating rjil800bucket20002
+Creating rjil800bucket20003
+Creating rjil800bucket20004
+Creating rjil800bucket20005
+Creating rjil800bucket20006
+Creating rjil800bucket20007
+Creating rjil800bucket20008
+Creating rjil800bucket20009
+Creating rjil800bucket200010
+Creating rjil800bucket200011
+Traceback (most recent call last):
+    File "listBuckets.py", line 21, in <module>
+    obj.create_bucket('rjil800bucket2000' + str(i))
+    File "/usr/lib/python2.7/dist-packages/boto/s3/connection.py", line 504, in create_bucket
+    response.status, response.reason, body)
+    boto.exception.S3ResponseError: S3ResponseError: 400 Bad Request
+    <?xml version="1.0" encoding="UTF-8"?><Error><Code>TooManyBuckets</Code></Error>
+    shivanshu@admin ~/gitcode/ceph_tests: 
+
+
+
+

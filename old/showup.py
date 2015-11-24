@@ -9,8 +9,6 @@ RADOSHOST = '127.0.0.1'
 RADOSPORT = 7480
 BUCKETNAME = 'bucket_a'
 
-print "Making connections..."
-
 '''
 ## Local users
 u1_access_key = 'INDCMF1YDM0N785EKCBN'
@@ -50,34 +48,11 @@ conn_u2 = boto.connect_s3(
 
 ####################################################
 
-
-
-#################### CLEANUP #######################
-print "\nCleaning up..."
-
-print "Total number of buckets for the user: " + str(len(conn_u1.get_all_buckets()))
-for bkt in conn_u1.get_all_buckets():
-    pattern = re.compile('r*')
-    if pattern.match(bkt.name):
-        print "Attempting to delete: " + str(bkt.name)
-        for k in bkt.list():
-            k.delete()
-        conn_u1.delete_bucket(bkt.name)
 print "Total number of buckets for the user: " + str(len(conn_u1.get_all_buckets()))
 
-for bkt in conn_u2.get_all_buckets():
-    pattern = re.compile('brand*')
-    if pattern.match(bkt.name):
-        for k in bkt.list():
-            k.delete()
-        conn_u2.delete_bucket(bkt.name)
 print "Attemting to list buckets for both users"
 print "First user's buckets:"
 for bucket in conn_u1.get_all_buckets():
-    print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
-
-print "Second user's buckets:"
-for bucket in conn_u2.get_all_buckets():
     print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
 
 ####################################################

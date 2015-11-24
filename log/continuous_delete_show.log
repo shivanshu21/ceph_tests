@@ -1,0 +1,30 @@
+2015-11-16 00:43:54.339731 7f8e6effd700  1 civetweb: 0x7f8e440008c0: 127.0.0.1 - - [16/Nov/2015:00:43:53 +0530] "GET /rjilshivanshubucket220/ HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:54.377413 7f8e6effd700  1 ====== starting new request req=0x7f8e4407d620 =====
+2015-11-16 00:43:54.592946 7f8e6d7fa700  1 ====== req done req=0x3785d10 http_status=200 ======
+2015-11-16 00:43:54.593017 7f8e6d7fa700  1 civetweb: 0x376cf90: 127.0.0.1 - - [16/Nov/2015:00:43:53 +0530] "GET / HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:54.604349 7f8e6d7fa700  1 ====== starting new request req=0x37c0010 =====
+2015-11-16 00:43:55.683697 7f8e6d7fa700  1 ====== req done req=0x37c0010 http_status=200 ======
+2015-11-16 00:43:55.683758 7f8e6d7fa700  1 civetweb: 0x376cf90: 127.0.0.1 - - [16/Nov/2015:00:43:54 +0530] "GET / HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:55.694686 7f8e6d7fa700  1 ====== starting new request req=0x37aa080 =====
+2015-11-16 00:43:55.958640 7f8e6effd700  1 ====== req done req=0x7f8e4407d620 http_status=204 ======
+2015-11-16 00:43:55.958721 7f8e6effd700  1 civetweb: 0x7f8e440008c0: 127.0.0.1 - - [16/Nov/2015:00:43:54 +0530] "DELETE /rjilshivanshubucket220/ HTTP/1.1" 204 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:55.959413 7f8e6effd700  1 ====== starting new request req=0x7f8e441277b0 =====
+2015-11-16 00:43:56.128384 7f8e6d7fa700  1 ====== req done req=0x37aa080 http_status=200 ======
+2015-11-16 00:43:56.128500 7f8e6d7fa700  1 civetweb: 0x376cf90: 127.0.0.1 - - [16/Nov/2015:00:43:55 +0530] "GET / HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:56.139776 7f8e6d7fa700  1 ====== starting new request req=0x3697c00 =====
+2015-11-16 00:43:56.488981 7f8e6effd700  1 ====== req done req=0x7f8e441277b0 http_status=200 ======
+2015-11-16 00:43:56.489028 7f8e6effd700  1 civetweb: 0x7f8e440008c0: 127.0.0.1 - - [16/Nov/2015:00:43:55 +0530] "GET /rjilshivanshubucket221/ HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:56.529320 7f8e6effd700  1 ====== starting new request req=0x7f8e44162880 =====
+2015-11-16 00:43:56.792111 7f8e6d7fa700  1 ====== req done req=0x3697c00 http_status=200 ======
+2015-11-16 00:43:56.792178 7f8e6d7fa700  1 civetweb: 0x376cf90: 127.0.0.1 - - [16/Nov/2015:00:43:56 +0530] "GET / HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:56.811575 7f8e6d7fa700  1 ====== starting new request req=0x3765e30 =====
+2015-11-16 00:43:57.584827 7f8e6effd700  1 ====== req done req=0x7f8e44162880 http_status=204 ======
+2015-11-16 00:43:57.584927 7f8e6effd700  1 civetweb: 0x7f8e440008c0: 127.0.0.1 - - [16/Nov/2015:00:43:56 +0530] "DELETE /rjilshivanshubucket221/ HTTP/1.1" 204 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:57.585781 7f8e6effd700  1 ====== starting new request req=0x7f8e4419e2c0 =====
+2015-11-16 00:43:57.632451 7f8e6d7fa700  1 ====== req done req=0x3765e30 http_status=200 ======
+2015-11-16 00:43:57.632578 7f8e6d7fa700  1 civetweb: 0x376cf90: 127.0.0.1 - - [16/Nov/2015:00:43:56 +0530] "GET / HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:57.644826 7f8e6d7fa700  1 ====== starting new request req=0x36e6190 =====
+2015-11-16 00:43:58.338713 7f8e6effd700  1 ====== req done req=0x7f8e4419e2c0 http_status=200 ======
+2015-11-16 00:43:58.338797 7f8e6effd700  1 civetweb: 0x7f8e440008c0: 127.0.0.1 - - [16/Nov/2015:00:43:57 +0530] "GET /rjilshivanshubucket222/ HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-generic
+2015-11-16 00:43:58.377356 7f8e6effd700  1 ====== starting new request req=0x7f8e441dbba0 =====
+

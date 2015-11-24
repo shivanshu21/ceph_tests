@@ -2,25 +2,24 @@ import dsslib
 import math, os
 from filechunkio import FileChunkIO
 import sys
+import time
+from boto.s3.key import Key
 
 dsslib.GLOBAL_DEBUG = 1
 dsslib.RADOSHOST = '127.0.0.1'
 dsslib.RADOSPORT = 7480
-CALLER = dsslib.USER_keystone1
+CALLER = dsslib.USER_keystone3
 #CALLER = dsslib.USER_aws1
 
 ############### MAX BUCKET LIMIT ###################
 
 def bucketMaxNumber():
-    obj = dsslib.getConnection(CALLER)
-    print "Total number of buckets for the user: " + str(len(obj.get_all_buckets()))
-    if len(obj.get_all_buckets()) != 1000:
-        dsslib.whisper("Deleting all old buckets")
-        dsslib.cleanupUser(obj)
-        dsslib.whisper("Creating new buckets")
-        for i in range(1, 1001):
-            name = 'rjilshivanshubucket' + str(i)
-            obj.create_bucket(name)
+    obj = dsslib.getConnection(dsslib.USER_keystone995)
+    #dsslib.createMaxBuckets(dsslib.USER_keystone1,   1000, 'rjilshivanshubucket')
+    dsslib.createMaxBuckets(dsslib.USER_keystone800, 1000, 'rjil800bucket')
+    #dsslib.createMaxBuckets(dsslib.USER_keystone801, 1000, 'rjil801bucket')
+    #dsslib.createMaxBuckets(dsslib.USER_keystone802, 1000, 'rjil802bucket')
+    #dsslib.createMaxBuckets(dsslib.USER_keystone803, 1000, 'rjil803bucket')
 
     ## Make 1001 bucket
     try:
@@ -60,7 +59,7 @@ def bucketMaxNumber():
 
 def multipartObjectUpload():
     result = 0
-    obj = dsslib.getConnection(dsslib.USER_keystone3)
+    obj = dsslib.getConnection(CALLER)
     dsslib.whisper("Making bucket and listing...")
     obj.create_bucket('rjilshivanshuautoq')
     dsslib.whisper(str(obj.get_all_buckets()))
@@ -87,14 +86,112 @@ def multipartObjectUpload():
         print "Unexpected error: ", sys.exc_info()
         result = -1
 
-    dsslib.cleanupUser(obj)
+    dsslib.cleanupUser(obj, 'rjilshiv')
+    return result
+
+####################################################
+
+#################### DNS TESTS ####################
+
+def dnsNamesTest():
+    obj = dsslib.getConnection(CALLER)
+    result = 0
+    longHundredChars = 'a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789'
+    longFiftyChars = 'a123456789a123456789a123456789a123456789a123456789'
+    longTFTchars = longHundredChars + longHundredChars + longFiftyChars + 'qwe'
+    try:
+        obj.create_bucket(longTFTchars)
+        obj.delete_bucket(longTFTchars)
+        print "Able to create bucket with 253 chars in name"
+    except:
+        print "Failed to create or delete a valid bucket name"
+        print "Unexpected error: ", sys.exc_info()
+        return -1
+
+    try:
+        badName = longTFTchars + 'abc'
+        obj.create_bucket(badName)
+        print "Unexpectedly created bucket with illegally long name"
+        dsslib.listBucketNum(obj, "user3")
+        dsslib.listBucket(obj, "user3")
+        obj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating 256 char bucket name"
+        print "Expected error: ", sys.exc_info()
+
+    try:
+        badName = 'Abc'
+        obj.create_bucket(badName)
+        print "Unexpectedly created bucket with capital letter name"
+        dsslib.listBucketNum(obj, "user3")
+        dsslib.listBucket(obj, "user3")
+        obj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating bucket name with CAPS"
+        print "Expected error: ", sys.exc_info()
+
+    try:
+        badName = 'bc/'
+        obj.create_bucket(badName)
+        print "Unexpectedly created bucket with slash in name"
+        dsslib.listBucketNum(obj, "user3")
+        dsslib.listBucket(obj, "user3")
+        obj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating bucket name with slash"
+        print "Expected error: ", sys.exc_info()
+
+    return result
+
+####################################################
+
+################ PUBLIC URL TESTS ##################
+
+def publicUrlTest():
+    result = 0
+    obj = dsslib.getConnection(CALLER)
+    b1 = obj.create_bucket('urlbucket1')
+    k = Key(b1)
+    k.key = 'obj1'
+    k.set_contents_from_string('Data of URL object')
+    print "Setting ACL on obj"
+    k.set_acl('public-read')
+    print "Setting ACL on bucket"
+    b1.set_acl('public-read')
+
+    m = Key(b1)
+    m.key = 'obj1'
+    urlname = m.generate_url(1000)
+    print "\nThe obj URL is: " + str(urlname)
+    urlname = b1.generate_url(1000)
+    print "\nThe bucket URL is: " + str(urlname)
+
+    for i in range(1, 21):
+        time.sleep(1)
+        if i % 5 == 0:
+            print str(20 - i) + " Seconds left before Obj deletion"
+
+    m.delete()
+    print "Object deleted\n"
+
+    for i in range(1, 21):
+        time.sleep(1)
+        if i % 5 == 0:
+            print str(20 - i) + " Seconds left before bucket deletion"
+
+    obj.delete_bucket('urlbucket1')
+    print "Bucket deleted\n"
     return result
 
 ####################################################
 
 #################### CALL TESTS ####################
 
-dsslib.callTest(bucketMaxNumber(), "Thousand bucket creation")
-dsslib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
-
+##dsslib.callTest(bucketMaxNumber(), "Thousand bucket creation")
+##dsslib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
+##dsslib.callTest(dnsNamesTest(), "Check various DNS name rules")
+dsslib.callTest(publicUrlTest(), "Public URL test")
 ####################################################

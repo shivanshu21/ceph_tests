@@ -1,0 +1,25 @@
+Able to create bucket with 253 chars in name
+Unexpectedly created bucket with illegal name
+Total number of buckets for user3: 1
+Listing buckets for user3
+a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789qwezz  2015-11-16T12:14:22.000Z
+
+=====================================
+Check various DNS name rules : Failed
+=====================================
+
+
+Able to create bucket with 253 chars in name
+Expected failure in creating 256 char bucket name
+Expected error:  (<class 'boto.exception.S3ResponseError'>, S3ResponseError: 400 Bad Request
+        <?xml version="1.0" encoding="UTF-8"?><Error><Code>InvalidBucketName</Code></Error>, <traceback object at 0x7f201ada1128>)
+
+=====================================
+Check various DNS name rules : Pass
+=====================================
+
+
+2015-11-16 17:37:37.308750 7f1c21ffb700  1 civetweb: 0x7f1c0c0008c0: 127.0.0.1 - - [16/Nov/2015:17:37:34 +0530] "PUT /a123456789a123456789a123456
+789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a1
+23456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789qwezz/ HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-52-g
+eneric
