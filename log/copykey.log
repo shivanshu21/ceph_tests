@@ -1,0 +1,115 @@
+2015-11-26 16:55:47.003180 7f5df9ffb700  1 ====== starting new request req=0x7f5ddc012400 =====
+2015-11-26 16:55:47.003191 7f5df9ffb700  2 req 18:0.000011::PUT /mynewbucket/copiedkey::initializing for trans_id = tx000000000000000000012-005656ec3a-34456-default
+2015-11-26 16:55:47.003194 7f5df9ffb700 10 host=127.0.0.1
+2015-11-26 16:55:47.003195 7f5df9ffb700 20 subdomain= domain= in_hosted_domain=0
+2015-11-26 16:55:47.003203 7f5df9ffb700 10 meta>> HTTP_X_AMZ_COPY_SOURCE
+2015-11-26 16:55:47.003206 7f5df9ffb700 10 meta>> HTTP_X_AMZ_METADATA_DIRECTIVE
+2015-11-26 16:55:47.003208 7f5df9ffb700 10 meta>> HTTP_X_AMZ_STORAGE_CLASS
+2015-11-26 16:55:47.003211 7f5df9ffb700 10 x>> x-amz-copy-source:rjil803bucket997/rjil803bucket997_OBJ_1
+2015-11-26 16:55:47.003211 7f5df9ffb700 10 x>> x-amz-metadata-directive:COPY
+2015-11-26 16:55:47.003212 7f5df9ffb700 10 x>> x-amz-storage-class:STANDARD
+2015-11-26 16:55:47.003222 7f5df9ffb700 10 s->object=copiedkey s->bucket=mynewbucket
+2015-11-26 16:55:47.003229 7f5df9ffb700  2 req 18:0.000048:s3:PUT /mynewbucket/copiedkey::getting op
+2015-11-26 16:55:47.003233 7f5df9ffb700  2 req 18:0.000053:s3:PUT /mynewbucket/copiedkey:copy_obj:authorizing
+2015-11-26 16:55:47.003236 7f5df9ffb700 20 s3 keystone: trying keystone auth
+2015-11-26 16:55:47.003255 7f5df9ffb700 10 get_canon_resource(): dest=/mynewbucket/copiedkey
+2015-11-26 16:55:47.003286 7f5df9ffb700 20 sending request to http://localhost:35357/v2.0/s3tokens
+2015-11-26 16:55:47.592369 7f5df9ffb700  5 s3 keystone: validated token: tenant803:user803 expires: 1448540747
+2015-11-26 16:55:47.592401 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff5b50 obj=.users.uid:40772e4f02c8493d9ca574ecf97a967f state=0x7f5ddc02d270 s->prefetch_data=0
+2015-11-26 16:55:47.592408 7f5df9ffb700 20 cache get: touching lru, lru_counter=36 promotion_ts=34
+2015-11-26 16:55:47.592410 7f5df9ffb700 10 moving .users.uid+40772e4f02c8493d9ca574ecf97a967f to cache LRU end
+2015-11-26 16:55:47.592412 7f5df9ffb700 10 cache get: name=.users.uid+40772e4f02c8493d9ca574ecf97a967f : hit
+2015-11-26 16:55:47.592417 7f5df9ffb700 20 get_obj_state: s->obj_tag was set empty
+2015-11-26 16:55:47.592420 7f5df9ffb700 10 cache get: name=.users.uid+40772e4f02c8493d9ca574ecf97a967f : hit
+2015-11-26 16:55:47.592439 7f5df9ffb700  2 req 18:0.589258:s3:PUT /mynewbucket/copiedkey:copy_obj:reading permissions
+2015-11-26 16:55:47.592456 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=.rgw:rjil803bucket997 state=0x7f5ddc02d270 s->prefetch_data=0
+2015-11-26 16:55:47.592461 7f5df9ffb700 20 cache get: touching lru, lru_counter=37 promotion_ts=13
+2015-11-26 16:55:47.592463 7f5df9ffb700 10 moving .rgw+rjil803bucket997 to cache LRU end
+2015-11-26 16:55:47.592464 7f5df9ffb700 10 cache get: name=.rgw+rjil803bucket997 : hit
+2015-11-26 16:55:47.592468 7f5df9ffb700 20 get_obj_state: s->obj_tag was set empty
+ 2015-11-26 16:55:47.592471 7f5df9ffb700 10 cache get: name=.rgw+rjil803bucket997 : hit
+                     2015-11-26 16:55:47.592479 7f5df9ffb700 20 rgw_get_bucket_info: bucket instance: rjil803bucket997(@{i=.rgw.buckets.index,e=.rgw.buckets.extra}.rgw.buckets[default.174124.4014])
+ 2015-11-26 16:55:47.592485 7f5df9ffb700 20 reading from .rgw:.bucket.meta.rjil803bucket997:default.174124.4014
+ 2015-11-26 16:55:47.592491 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=.rgw:.bucket.meta.rjil803bucket997:default.174124.4014 state=0x7f5ddc02c590 s->prefetch_data=0
+ 2015-11-26 16:55:47.592496 7f5df9ffb700 20 cache get: touching lru, lru_counter=38 promotion_ts=17
+ 2015-11-26 16:55:47.592497 7f5df9ffb700 10 moving .rgw+.bucket.meta.rjil803bucket997:default.174124.4014 to cache LRU end
+ 2015-11-26 16:55:47.592498 7f5df9ffb700 10 cache get: name=.rgw+.bucket.meta.rjil803bucket997:default.174124.4014 : hit
+ 2015-11-26 16:55:47.592505 7f5df9ffb700 20 get_obj_state: s->obj_tag was set empty
+ 2015-11-26 16:55:47.592507 7f5df9ffb700 20 Read xattr: user.rgw.acl
+ 2015-11-26 16:55:47.592508 7f5df9ffb700 20 Read xattr: user.rgw.idtag
+ 2015-11-26 16:55:47.592508 7f5df9ffb700 20 Read xattr: user.rgw.manifest
+ 2015-11-26 16:55:47.592510 7f5df9ffb700 10 cache get: name=.rgw+.bucket.meta.rjil803bucket997:default.174124.4014 : hit
+ 2015-11-26 16:55:47.592521 7f5df9ffb700 10 chain_cache_entry: cache_locator=.rgw+rjil803bucket997
+ 2015-11-26 16:55:47.592522 7f5df9ffb700 10 chain_cache_entry: cache_locator=.rgw+.bucket.meta.rjil803bucket997:default.174124.4014
+ 2015-11-26 16:55:47.592548 7f5df9ffb700 15 Read AccessControlPolicy<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>59aec53601914f338cfb665546002be0</ID><DisplayName>tenant804</DisplayName></Owner><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI>http://acs.amazonaws.com/groups/global/AllUsers</URI></Grantee><Permission>READ</Permission></Grant><Grant><Grantee
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI>http://acs.amazonaws.com/groups/global/AllUsers</URI></Grantee><Permission>WRITE</Permission></Grant><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID>59aec53601914f338cfb665546002be0</ID><DisplayName>tenant804</DisplayName></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList></AccessControlPolicy>
+ 2015-11-26 16:55:47.592559 7f5df9ffb700  2 req 18:0.589379:s3:PUT /mynewbucket/copiedkey:copy_obj:init op
+ 2015-11-26 16:55:47.592567 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff5d40 obj=.users.uid:59aec53601914f338cfb665546002be0 state=0x7f5ddc02d840 s->prefetch_data=0
+ 2015-11-26 16:55:47.592571 7f5df9ffb700 20 cache get: touching lru, lru_counter=39 promotion_ts=31
+ 2015-11-26 16:55:47.592573 7f5df9ffb700 10 moving .users.uid+59aec53601914f338cfb665546002be0 to cache LRU end
+ 2015-11-26 16:55:47.592575 7f5df9ffb700 10 cache get: name=.users.uid+59aec53601914f338cfb665546002be0 : hit
+ 2015-11-26 16:55:47.592578 7f5df9ffb700 20 get_obj_state: s->obj_tag was set empty
+ 2015-11-26 16:55:47.592581 7f5df9ffb700 10 cache get: name=.users.uid+59aec53601914f338cfb665546002be0 : hit
+ 2015-11-26 16:55:47.592591 7f5df9ffb700  2 req 18:0.589411:s3:PUT /mynewbucket/copiedkey:copy_obj:verifying op mask
+ 2015-11-26 16:55:47.592594 7f5df9ffb700 20 required_mask= 2 user.op_mask=7
+ 2015-11-26 16:55:47.592595 7f5df9ffb700  2 req 18:0.589415:s3:PUT /mynewbucket/copiedkey:copy_obj:verifying op permissions
+ 2015-11-26 16:55:47.592614 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=rjil803bucket997:rjil803bucket997_OBJ_1 state=0x7f5ddc02dbe0 s->prefetch_data=1
+ 2015-11-26 16:55:48.088551 7f5df9ffb700 10 manifest: total_size = 14
+ 2015-11-26 16:55:48.088558 7f5df9ffb700 20 get_obj_state: setting s->obj_tag to default.174124.44042
+ 2015-11-26 16:55:48.088579 7f5df9ffb700 15 Read AccessControlPolicy<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>40772e4f02c8493d9ca574ecf97a967f</ID><DisplayName>tenant803</DisplayName></Owner><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:type="CanonicalUser"><ID>40772e4f02c8493d9ca574ecf97a967f</ID><DisplayName>tenant803</DisplayName></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList></AccessControlPolicy>
+ 2015-11-26 16:55:48.088588 7f5df9ffb700  5 Searching permissions for uid=40772e4f02c8493d9ca574ecf97a967f mask=49
+ 2015-11-26 16:55:48.088590 7f5df9ffb700  5 Found permission: 15
+ 2015-11-26 16:55:48.088591 7f5df9ffb700  5 Searching permissions for group=1 mask=49
+ 2015-11-26 16:55:48.088591 7f5df9ffb700  5 Permissions for group not found
+ 2015-11-26 16:55:48.088592 7f5df9ffb700  5 Searching permissions for group=2 mask=49
+ 2015-11-26 16:55:48.088593 7f5df9ffb700  5 Permissions for group not found
+ 2015-11-26 16:55:48.088593 7f5df9ffb700  5 Getting permissions id=40772e4f02c8493d9ca574ecf97a967f owner=40772e4f02c8493d9ca574ecf97a967f perm=1
+ 2015-11-26 16:55:48.088594 7f5df9ffb700 10  uid=40772e4f02c8493d9ca574ecf97a967f requested perm (type)=1, policy perm=1, user_perm_mask=15, acl perm=1
+ 2015-11-26 16:55:48.088619 7f5df9ffb700 15 Read AccessControlPolicy<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Owner><ID>59aec53601914f338cfb665546002be0</ID><DisplayName>tenant804</DisplayName></Owner><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI>http://acs.amazonaws.com/groups/global/AllUsers</URI></Grantee><Permission>READ</Permission></Grant><Grant><Grantee
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI>http://acs.amazonaws.com/groups/global/AllUsers</URI></Grantee><Permission>WRITE</Permission></Grant><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID>59aec53601914f338cfb665546002be0</ID><DisplayName>tenant804</DisplayName></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList></AccessControlPolicy>
+ 2015-11-26 16:55:48.088625 7f5df9ffb700  5 Searching permissions for uid=40772e4f02c8493d9ca574ecf97a967f mask=50
+ 2015-11-26 16:55:48.088626 7f5df9ffb700  5 Permissions for user not found
+ 2015-11-26 16:55:48.088627 7f5df9ffb700  5 Searching permissions for group=1 mask=50
+ 2015-11-26 16:55:48.088628 7f5df9ffb700  5 Found permission: 3
+ 2015-11-26 16:55:48.088628 7f5df9ffb700  5 Searching permissions for group=2 mask=50
+ 2015-11-26 16:55:48.088629 7f5df9ffb700  5 Permissions for group not found
+ 2015-11-26 16:55:48.088629 7f5df9ffb700  5 Getting permissions id=40772e4f02c8493d9ca574ecf97a967f owner=59aec53601914f338cfb665546002be0 perm=2
+ 2015-11-26 16:55:48.088630 7f5df9ffb700 10  uid=40772e4f02c8493d9ca574ecf97a967f requested perm (type)=2, policy perm=2, user_perm_mask=15, acl perm=2
+ 2015-11-26 16:55:48.088638 7f5df9ffb700  2 req 18:1.085458:s3:PUT /mynewbucket/copiedkey:copy_obj:verifying op params
+ 2015-11-26 16:55:48.088641 7f5df9ffb700  2 req 18:1.085461:s3:PUT /mynewbucket/copiedkey:copy_obj:executing
+ 2015-11-26 16:55:48.088651 7f5df9ffb700 10 x>> x-amz-copy-source:rjil803bucket997/rjil803bucket997_OBJ_1
+ 2015-11-26 16:55:48.088655 7f5df9ffb700 10 x>> x-amz-metadata-directive:COPY
+ 2015-11-26 16:55:48.088657 7f5df9ffb700 10 x>> x-amz-storage-class:STANDARD
+  2015-11-26 16:55:48.088692 7f5df9ffb700  5 Copy object rjil803bucket997(@{i=.rgw.buckets.index,e=.rgw.buckets.extra}.rgw.buckets[default.174124.4014]):rjil803bucket997_OBJ_1 => mynewbucket(@{i=.rgw.buckets.index,e=.rgw.buckets.extra}.rgw.buckets[default.214102.1]):copiedkey
+                                                                                                                                                              2015-11-26 16:55:48.088701 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=rjil803bucket997:rjil803bucket997_OBJ_1
+                                                                                                                                                              state=0x7f5ddc02dbe0 s->prefetch_data=1
+                                                                                                                                                              2015-11-26 16:55:48.088709 7f5df9ffb700 20 Read xattr: user.rgw.acl
+                                                                                                                                                              2015-11-26 16:55:48.088710 7f5df9ffb700 20 Read xattr: user.rgw.content_type
+                                                                                                                                                              2015-11-26 16:55:48.088711 7f5df9ffb700 20 Read xattr: user.rgw.etag
+                                                                                                                                                              2015-11-26 16:55:48.088712 7f5df9ffb700 20 Read xattr: user.rgw.idtag
+                                                                                                                                                              2015-11-26 16:55:48.088713 7f5df9ffb700 20 Read xattr: user.rgw.manifest
+                                                                                                                                                              2015-11-26 16:55:48.088718 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=rjil803bucket997:rjil803bucket997_OBJ_1
+                                                                                                                                                              state=0x7f5ddc02dbe0 s->prefetch_data=1
+                                                                                                                                                              2015-11-26 16:55:48.088755 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=rjil803bucket997:rjil803bucket997_OBJ_1
+                                                                                                                                                              state=0x7f5ddc02dbe0 s->prefetch_data=1
+                                                                                                                                                              2015-11-26 16:55:48.088759 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=rjil803bucket997:rjil803bucket997_OBJ_1
+                                                                                                                                                              state=0x7f5ddc02dbe0 s->prefetch_data=1
+                                                                                                                                                              2015-11-26 16:55:48.088772 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=mynewbucket:copiedkey state=0x7f5ddc02fff0
+                                                                                                                                                              s->prefetch_data=0
+                                                                                                                                                              2015-11-26 16:55:48.184308 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff6160 obj=mynewbucket:copiedkey state=0x7f5ddc02fff0
+                                                                                                                                                              s->prefetch_data=0
+                                                                                                                                                              2015-11-26 16:55:48.184330 7f5df9ffb700 10 setting object write_tag=_88TZYFxZD0s0xEWU-17YnG5ilkHCKGL
+                                                                                                                                                              2015-11-26 16:55:48.184361 7f5df9ffb700 20 reading from .rgw:.bucket.meta.mynewbucket:default.214102.1
+                                                                                                                                                              2015-11-26 16:55:48.184369 7f5df9ffb700 20 get_obj_state: rctx=0x7f5df9ff3af0 obj=.rgw:.bucket.meta.mynewbucket:default.214102.1
+                                                                                                                                                              state=0x7f5ddc040830 s->prefetch_data=0
+                                                                                                                                                              2015-11-26 16:55:48.184375 7f5df9ffb700 20 cache get: touching lru, lru_counter=40 promotion_ts=36
+                                                                                                                                                              2015-11-26 16:55:48.184377 7f5df9ffb700 10 moving .rgw+.bucket.meta.mynewbucket:default.214102.1 to cache LRU end
+                                                                                                                                                              2015-11-26 16:55:48.184378 7f5df9ffb700 10 cache get: name=.rgw+.bucket.meta.mynewbucket:default.214102.1 : hit
+                                                                                                                                                              2015-11-26 16:55:48.184384 7f5df9ffb700 20 get_obj_state: s->obj_tag was set empty
+                                                                                                                                                              2015-11-26 16:55:48.184387 7f5df9ffb700 10 cache get: name=.rgw+.bucket.meta.mynewbucket:default.214102.1 : hit
+                                                                                                                                                              2015-11-26 16:55:48.184395 7f5df9ffb700 20  bucket index object: .dir.default.214102.1
+                                                                                                                                                              2015-11-26 16:55:48.594584 7f5df9ffb700  2 req 18:1.591403:s3:PUT /mynewbucket/copiedkey:copy_obj:http status=200
+                                                                                                                                                              2015-11-26 16:55:48.594597 7f5df9ffb700  1 ====== req done req=0x7f5ddc012400 http_status=200 ======
+                                                                                                                                                              2015-11-26 16:55:48.594639 7f5df9ffb700  1 civetweb: 0x7f5ddc0008c0: 127.0.0.1 - - [26/Nov/2015:16:55:46 +0530] "PUT /mynewbucket/copiedkey
+                                                                                                                                                              HTTP/1.1" 200 0 - Boto/2.20.1 Python/2.7.6 Linux/3.16.0-53-generic

@@ -1,0 +1,20 @@
+Why we don't have public write alone?
+
+Authenticated write hai ya nahin in ceph.
+
+Email grant or canonical grant in ceph.
+
+public-read-write objects buckets corner cases. Who can delete?
+
+can bucket owner change acls on objects he does not own?
+
+If IAM policy allows access but ACL denies? Deny. Verify.
+
+Anonymous user uploads using postman. What is the default ACL?
+
+
+static void init_anon_user(struct req_state *s)
+{
+   s->perm_mask = RGW_PERM_FULL_CONTROL;
+}
+

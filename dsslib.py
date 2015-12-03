@@ -1,14 +1,14 @@
 import boto
-import boto.s3.connection
 from boto.s3.key import Key
+from boto.s3.connection import S3Connection
 import re
 import sys
 ###################### INIT ########################
 
 # PARAMS
 GLOBAL_DEBUG = 0
-#RADOSHOST = 's3-website-us-west-2.amazonaws.com'
-#RADOSPORT = 80
+##RADOSHOST = 's3-website-us-west-2.amazonaws.com'
+##RADOSPORT = 80
 RADOSHOST = '127.0.0.1'
 RADOSPORT = 7480
 
@@ -24,6 +24,9 @@ USER_keystone802 = 7
 USER_keystone803 = 8
 USER_keystone804 = 9
 USER_aws1 = 10
+USER_aws2 = 11
+USER_aws3 = 12
+USER_aws4 = 13
 
 user_profiles = [
         {'access': 'INDCMF1YDM0N785EKCBN'            , 'secret': 'oxvVdSd1P3ICWlPyCehdco8h56OPqnyjtOtN52c4'}, ## Local user1
@@ -36,6 +39,10 @@ user_profiles = [
         {'access': '6fd687641b69440b9e47261ead074bec', 'secret': '0859f01207394b5eaebbbf63920485ec'}, ## USER Tenant Role 802
         {'access': 'af12fdd0d8aa447f92b5af083a34c6fe', 'secret': '8644fcb3be854900959573237911f245'}, ## USER Tenant Role 803
         {'access': '1acc62c9a01a4f9aa3dc0773cdc8b9de', 'secret': 'e1ba72ff044d41d4baf57ae083f23533'}, ## USER Tenant Role 804
+        {'access': 'AKIAIGMW3FGB7KRR7ZRQ',             'secret': '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'}, ## AWS shivanshu21 User_pers0
+        {'access': 'AKIAJMPEGDRHNCBXZZAQ',             'secret': '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'}, ## AWS shivanshu21 User_pers1
+        {'access': 'AKIAJRH3XDVUZMPYWOQQ',             'secret': '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'}, ## AWS shivanshuG
+        {'access': 'AKIAJ7JM6D3OFIV4PZSA',             'secret': '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'}, ## AWS shivanshu21 pers3
     ]
 
 ####################################################
@@ -43,8 +50,12 @@ user_profiles = [
 ################## CREATE CONNECTION ###############
 
 def getConnection(user):
-    if user == USER_aws1:
-        conn_obj = boto.connect_s3()
+    if user > 9:
+        AWS_ACCESS_KEY_ID = user_profiles[user]['access']
+        AWS_SECRET_ACCESS_KEY = user_profiles[user]['secret']
+        conn_obj = S3Connection(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+        if conn_obj is None:
+            print "NULL Object returned for user!!"
         return conn_obj
 
     conn_obj = boto.connect_s3(
@@ -128,5 +139,18 @@ def listBucket(userobj, uname):
     print "Listing buckets for " + uname
     for bucket in userobj.get_all_buckets():
         print "{name}\t{created}".format(name = bucket.name, created = bucket.creation_date)
+    return
+####################################################
+
+############## KEEP CHANGING ACLS ##################
+
+def keepChangingAcls(username, bucket):
+    obj = dsslib.getConnection(username)
+    acl_list = ('public-read', 'private')
+    for i in range(1, 11):
+        b1 = obj.get_bucket(bucket)
+        whisper("Changing ACL to " + str(acl_list[i % 2]))
+        b1.set_acl(acl_list[i % 2])
+        time.sleep(1)
     return
 ####################################################
