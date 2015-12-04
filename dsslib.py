@@ -39,10 +39,6 @@ user_profiles = [
         {'access': '6fd687641b69440b9e47261ead074bec', 'secret': '0859f01207394b5eaebbbf63920485ec'}, ## USER Tenant Role 802
         {'access': 'af12fdd0d8aa447f92b5af083a34c6fe', 'secret': '8644fcb3be854900959573237911f245'}, ## USER Tenant Role 803
         {'access': '1acc62c9a01a4f9aa3dc0773cdc8b9de', 'secret': 'e1ba72ff044d41d4baf57ae083f23533'}, ## USER Tenant Role 804
-        {'access': 'AKIAIGMW3FGB7KRR7ZRQ',             'secret': '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'}, ## AWS shivanshu21 User_pers0
-        {'access': 'AKIAJMPEGDRHNCBXZZAQ',             'secret': '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'}, ## AWS shivanshu21 User_pers1
-        {'access': 'AKIAJRH3XDVUZMPYWOQQ',             'secret': '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'}, ## AWS shivanshuG
-        {'access': 'AKIAJ7JM6D3OFIV4PZSA',             'secret': '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'}, ## AWS shivanshu21 pers3
     ]
 
 ####################################################
