@@ -7,9 +7,35 @@ from filechunkio import FileChunkIO
 
 dsslib.GLOBAL_DEBUG = 1
 dsslib.RADOSHOST = '127.0.0.1'
-dsslib.RADOSPORT = 7480
+dsslib.RADOSPORT = 80
 #CALLER = dsslib.USER_keystone803
 #obj = dsslib.getConnection(CALLER)
+
+
+
+'''=========================================================
+### API Doc testing
+'''
+usr_str = "user804"
+obj = dsslib.getConnection(dsslib.USER_keystone804)
+dsslib.listBucket(obj, usr_str)
+b = obj.create_bucket('docsbuck001')
+dsslib.listBucket(obj, usr_str)
+b.set_acl('public-read-write')
+
+k = Key(b)
+k.key = 'obj1'
+k.set_contents_from_string('Data of object')
+print "Setting ACL on obj"
+k.set_acl('public-read')
+
+print "\nObject has ACL============="
+print str(k.get_acl())
+
+
+
+
+
 
 
 
@@ -17,7 +43,6 @@ dsslib.RADOSPORT = 7480
 ## AWS user policy prevents user from listing bucket but allows getting objects inside the particular bucket
 ## Make listing buckets allowed. Generate signed URLs then make listing buckets not allowed in user policy.
 ## Check if the URLs still work.
-'''
 obj = dsslib.getConnection(dsslib.USER_aws2)
 b = obj.get_bucket('shivanshubucketauto4')
 for i in b.list():
@@ -28,7 +53,7 @@ for i in b.list():
         #print i.generate_url(1000);
     except:
         print "No permission!"
-
+'''
 
 
 
@@ -77,6 +102,9 @@ key2.delete()
 newobj.delete_bucket('mynewbucket')
 '''
 
+
+
+
 '''=================================================================
 ##Keeps listing bucket and other script changes ACLs
 b1 = obj.get_bucket('rjil800bucket200010')
@@ -91,6 +119,9 @@ for i in range(1, 101):
         print "Error: ", sys.exc_info()
 ====================================================================
 '''
+
+
+
 
 '''
 ##Checks if the buckets created post 1000 are actually present. And checks if a ghost bucket is present.

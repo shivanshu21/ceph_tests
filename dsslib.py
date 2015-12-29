@@ -23,22 +23,20 @@ USER_keystone801 = 6
 USER_keystone802 = 7
 USER_keystone803 = 8
 USER_keystone804 = 9
-USER_aws1 = 10
-USER_aws2 = 11
-USER_aws3 = 12
-USER_aws4 = 13
+USER_roopali = 10
 
 user_profiles = [
         {'access': 'INDCMF1YDM0N785EKCBN'            , 'secret': 'oxvVdSd1P3ICWlPyCehdco8h56OPqnyjtOtN52c4'}, ## Local user1
         {'access': 'EINGB4RLFBLPFLF2BFSJ'            , 'secret': 'cKsEUeHUD5GZzfDLbzxHBp3MVw6K2mwYSDrfjaIB'}, ## Local user2
-        {'access': '842f26b29ddd4331a5af8fc800ce04ca', 'secret': 'b772c2bb2ad149fcb941d298e2dabfb5'}, ## admintenant user1
-        {'access': 'cb92f272dc514e80acc782023c442c20', 'secret': 'd115d835aa2a4053a5d66bd93aea2046'}, ## admintenant user2
-        {'access': '911093f31862430b955a6cdea71fee2e', 'secret': '31a3770da550495d99dcc065488e1351'}, ## roottenant  user1
-        {'access': '5b1b1de1e75c44df8f66b9ccfa36e7b4', 'secret': '741feaaf1c5142dd93ab9d622e47de1c'}, ## USER Tenant Role 800
-        {'access': '06abdb34014a48f5b31a75171a820cba', 'secret': 'd98cb04ddafb48859e461b9cfbce2bc4'}, ## USER Tenant Role 801
-        {'access': '6fd687641b69440b9e47261ead074bec', 'secret': '0859f01207394b5eaebbbf63920485ec'}, ## USER Tenant Role 802
-        {'access': 'af12fdd0d8aa447f92b5af083a34c6fe', 'secret': '8644fcb3be854900959573237911f245'}, ## USER Tenant Role 803
-        {'access': '1acc62c9a01a4f9aa3dc0773cdc8b9de', 'secret': 'e1ba72ff044d41d4baf57ae083f23533'}, ## USER Tenant Role 804
+        {'access': '842f26b29ddd4331a5af8fc800ce04ca', 'secret': 'b772c2bb2ad149fcb941d298e2dabfb5'}, ## admintenant user1 Local
+        {'access': 'cb92f272dc514e80acc782023c442c20', 'secret': 'd115d835aa2a4053a5d66bd93aea2046'}, ## admintenant user2 Local
+        {'access': '911093f31862430b955a6cdea71fee2e', 'secret': '31a3770da550495d99dcc065488e1351'}, ## roottenant  user1 Local
+        {'access': '5b1b1de1e75c44df8f66b9ccfa36e7b4', 'secret': '741feaaf1c5142dd93ab9d622e47de1c'}, ## USER Tenant Role 800 Local
+        {'access': '06abdb34014a48f5b31a75171a820cba', 'secret': 'd98cb04ddafb48859e461b9cfbce2bc4'}, ## USER Tenant Role 801 Local
+        {'access': '6fd687641b69440b9e47261ead074bec', 'secret': '0859f01207394b5eaebbbf63920485ec'}, ## USER Tenant Role 802 Local
+        {'access': 'af12fdd0d8aa447f92b5af083a34c6fe', 'secret': '8644fcb3be854900959573237911f245'}, ## USER Tenant Role 803 Local
+        {'access': '1acc62c9a01a4f9aa3dc0773cdc8b9de', 'secret': 'e1ba72ff044d41d4baf57ae083f23533'}, ## USER Tenant Role 804 Local
+        {'access': '233d4232dd574be9b331ab7cebc33be9', 'secret': '063a862977ec4ee19a460f1413e64372'}, ## Roopali keystone on AWS mac
     ]
 
 ####################################################
@@ -60,7 +58,8 @@ def getConnection(user):
                    host = RADOSHOST,
                    port = RADOSPORT,
                    is_secure = False,
-                   calling_format = boto.s3.connection.OrdinaryCallingFormat()
+                   calling_format = boto.s3.connection.OrdinaryCallingFormat(),
+                   debug = 2,
                )
     return conn_obj
 
