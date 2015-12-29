@@ -23,7 +23,8 @@ USER_keystone801 = 6
 USER_keystone802 = 7
 USER_keystone803 = 8
 USER_keystone804 = 9
-USER_roopali = 10
+USER_AWSKEYSTONE_user800 = 10
+USER_AWSKEYSTONE_stagUser1 = 11
 
 user_profiles = [
         {'access': 'INDCMF1YDM0N785EKCBN'            , 'secret': 'oxvVdSd1P3ICWlPyCehdco8h56OPqnyjtOtN52c4'}, ## Local user1
@@ -36,7 +37,8 @@ user_profiles = [
         {'access': '6fd687641b69440b9e47261ead074bec', 'secret': '0859f01207394b5eaebbbf63920485ec'}, ## USER Tenant Role 802 Local
         {'access': 'af12fdd0d8aa447f92b5af083a34c6fe', 'secret': '8644fcb3be854900959573237911f245'}, ## USER Tenant Role 803 Local
         {'access': '1acc62c9a01a4f9aa3dc0773cdc8b9de', 'secret': 'e1ba72ff044d41d4baf57ae083f23533'}, ## USER Tenant Role 804 Local
-        {'access': '233d4232dd574be9b331ab7cebc33be9', 'secret': '063a862977ec4ee19a460f1413e64372'}, ## Roopali keystone on AWS mac
+        {'access': 'b121a34e6bb0487490f04f46052d1c59', 'secret': '9edbc23486664dcc8565d3e7d568ac6c'}, ## user800 keystone on AWS mac
+        {'access': 'fe895062422e49fdb7e4eba3df33f4f4', 'secret': '11c177ac796a452c8c69352df7eb86d7'}, ## stagUser1 keystone on AWS mac
     ]
 
 ####################################################
