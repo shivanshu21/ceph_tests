@@ -8,7 +8,6 @@ def get_signature(url, secret):
     return signed
 
 _url = "/docsbuck002"
-_secret = "e1ba72ff044d41d4baf57ae083f23533"
+_secret = ""
 sign = get_signature(_url, _secret)
-print "Signature is: "
-print str(sign)
+print "Signature is: " + str(sign)
