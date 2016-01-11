@@ -6,12 +6,6 @@ from boto.s3.key import Key
 from filechunkio import FileChunkIO
 
 dsslib.GLOBAL_DEBUG = 1
-dsslib.RADOSHOST = '127.0.0.1'
-dsslib.RADOSPORT = 80
-#CALLER = dsslib.USER_keystone803
-#obj = dsslib.getConnection(CALLER)
-
-
 
 '''=========================================================
 ### API Doc testing
@@ -31,12 +25,7 @@ k.set_acl('public-read')
 
 print "\nObject has ACL============="
 print str(k.get_acl())
-
-
-
-
-
-
+##====================================================================
 
 
 '''=========================================================
@@ -53,6 +42,7 @@ for i in b.list():
         #print i.generate_url(1000);
     except:
         print "No permission!"
+====================================================================
 '''
 
 
@@ -76,6 +66,7 @@ for i in alienBucket.list():
         print "===== Got it."
     except:
         print "No permission!"
+====================================================================
 '''
 
 
@@ -100,6 +91,7 @@ key2 = Key(b2)
 key2.key = 'copiedkey'
 key2.delete()
 newobj.delete_bucket('mynewbucket')
+====================================================================
 '''
 
 

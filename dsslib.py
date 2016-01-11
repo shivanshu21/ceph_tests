@@ -7,8 +7,6 @@ import sys
 
 # PARAMS
 GLOBAL_DEBUG = 0
-##RADOSHOST = 's3-website-us-west-2.amazonaws.com'
-##RADOSPORT = 80
 RADOSHOST = '127.0.0.1'
 RADOSPORT = 7480
 
@@ -25,6 +23,7 @@ USER_keystone803 = 8
 USER_keystone804 = 9
 USER_AWSKEYSTONE_user800 = 10
 USER_AWSKEYSTONE_stagUser1 = 11
+MAX_LOCAL_USERS = 12
 
 user_profiles = [
         {'access': 'INDCMF1YDM0N785EKCBN'            , 'secret': 'oxvVdSd1P3ICWlPyCehdco8h56OPqnyjtOtN52c4'}, ## Local user1
@@ -46,7 +45,7 @@ user_profiles = [
 ################## CREATE CONNECTION ###############
 
 def getConnection(user):
-    if user > 9:
+    if user > MAX_LOCAL_USERS:
         AWS_ACCESS_KEY_ID = user_profiles[user]['access']
         AWS_SECRET_ACCESS_KEY = user_profiles[user]['secret']
         conn_obj = S3Connection(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
