@@ -1,13 +1,8 @@
-import dsslib
-import math, os
-from filechunkio import FileChunkIO
-import sys
-import time
+import dssSanityLib
 from boto.s3.key import Key
 
-dsslib.GLOBAL_DEBUG = 1
-CALLER = dsslib.USER_keystone803
+dssSanityLib.GLOBAL_DEBUG = 1
 
-obj = dsslib.getConnection(CALLER)
-dsslib.listBucketNum(obj, "user803")
-##dsslib.listBucket(obj, "user803")
+obj = dssSanityLib.getConnection()
+dssSanityLib.listBucketNum(obj, "user")
+dssSanityLib.listBucket(obj, "user")

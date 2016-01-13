@@ -1,0 +1,362 @@
+DEBUG: Creating five test buckets and putting objects in them...
+Total number of buckets for User: 7
+DEBUG: Deleting all old buckets
+DEBUG: Cleaning up...
+Listing buckets for User
+dummy_bucket	2016-01-13T09:00:04.000Z
+log_bucket	2015-12-30T08:52:54.000Z
+my....bucket	2016-01-11T09:03:11.000Z
+public-shared	2015-12-31T13:47:12.000Z
+staging_mybucket	2016-01-11T10:02:45.000Z
+test_bucketrew	2015-12-23T14:44:05.000Z
+test_services	2015-12-29T08:15:02.000Z
+DEBUG: Creating new buckets
+DEBUG: Creating bucket rjilbucketsanity14526771591
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771591_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771592
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771592_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771593
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771593_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771594
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771594_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771595
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771595_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771596
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771596_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771597
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771597_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771598
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771598_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity14526771599
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_1
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_2
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_3
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_4
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_5
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_6
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_7
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_8
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_9
+DEBUG: Creating object rjilbucketsanity14526771599_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity145267715910
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_1
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_2
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_3
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_4
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_5
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_6
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_7
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_8
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_9
+DEBUG: Creating object rjilbucketsanity145267715910_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity145267715911
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_1
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_2
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_3
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_4
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_5
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_6
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_7
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_8
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_9
+DEBUG: Creating object rjilbucketsanity145267715911_OBJ_10
+DEBUG: Creating bucket rjilbucketsanity145267715912
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_1
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_2
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_3
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_4
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_5
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_6
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_7
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_8
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_9
+DEBUG: Creating object rjilbucketsanity145267715912_OBJ_10
+DEBUG: Deleting the test buckets...
+DEBUG: Cleaning up...
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771591,rjilbucketsanity14526771591_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771591>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity145267715910,rjilbucketsanity145267715910_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity145267715910>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity145267715911,rjilbucketsanity145267715911_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity145267715911>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity145267715912,rjilbucketsanity145267715912_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity145267715912>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771592,rjilbucketsanity14526771592_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771592>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771593,rjilbucketsanity14526771593_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771593>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771594,rjilbucketsanity14526771594_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771594>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771595,rjilbucketsanity14526771595_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771595>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771596,rjilbucketsanity14526771596_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771596>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771597,rjilbucketsanity14526771597_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771597>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771598,rjilbucketsanity14526771598_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771598>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_1>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_10>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_2>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_3>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_4>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_5>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_6>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_7>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_8>
+DEBUG: Deleting <Key: rjilbucketsanity14526771599,rjilbucketsanity14526771599_OBJ_9>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity14526771599>
+Listing buckets for User
+dummy_bucket	2016-01-13T09:00:04.000Z
+log_bucket	2015-12-30T08:52:54.000Z
+my....bucket	2016-01-11T09:03:11.000Z
+public-shared	2015-12-31T13:47:12.000Z
+staging_mybucket	2016-01-11T10:02:45.000Z
+test_bucketrew	2015-12-23T14:44:05.000Z
+test_services	2015-12-29T08:15:02.000Z
+
+	=====================================
+	Create buckets and objects then delete them : Pass
+	=====================================
+
+
+DEBUG: Making bucket and listing...
+Listing buckets for User
+dummy_bucket	2016-01-13T09:00:04.000Z
+log_bucket	2015-12-30T08:52:54.000Z
+my....bucket	2016-01-11T09:03:11.000Z
+public-shared	2015-12-31T13:47:12.000Z
+rjilbucketsanity1452677256	2016-01-13T09:27:02.000Z
+staging_mybucket	2016-01-11T10:02:45.000Z
+test_bucketrew	2015-12-23T14:44:05.000Z
+test_services	2015-12-29T08:15:02.000Z
+DEBUG: Got bucket: <Bucket: rjilbucketsanity1452677256>
+DEBUG: Uploading chunk: 0
+DEBUG: Uploading chunk: 1
+DEBUG: Cleaning up...
+DEBUG: Deleting <Key: rjilbucketsanity1452677256,vmlinuz-3.19.0-25-generic>
+DEBUG: Deleting bucket <Bucket: rjilbucketsanity1452677256>
+Listing buckets for User
+dummy_bucket	2016-01-13T09:00:04.000Z
+log_bucket	2015-12-30T08:52:54.000Z
+my....bucket	2016-01-11T09:03:11.000Z
+public-shared	2015-12-31T13:47:12.000Z
+staging_mybucket	2016-01-11T10:02:45.000Z
+test_bucketrew	2015-12-23T14:44:05.000Z
+test_services	2015-12-29T08:15:02.000Z
+
+	=====================================
+	Upload object in Multiparts : Pass
+	=====================================
+
+
+Able to create bucket with 253 chars in name
+Expected failure in creating 256 char bucket name
+Expected error:  (<class 'boto.exception.S3ResponseError'>, S3ResponseError: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?><Error><Code>InvalidBucketName</Code></Error>, <traceback object at 0x7f6de7e14560>)
+Expected failure in creating bucket name with CAPS
+Expected error:  (<class 'boto.exception.BotoClientError'>, BotoClientError: Bucket names cannot contain upper-case characters when using either the sub-domain or virtual hosting calling format., <traceback object at 0x7f6de77a9200>)
+Expected failure in creating bucket name with slash
+Expected error:  (<class 'boto.exception.S3ResponseError'>, S3ResponseError: 400 Bad Request
+<?xml version="1.0" encoding="UTF-8"?><Error><Code>InvalidBucketName</Code></Error>, <traceback object at 0x7f6de7e14128>)
+
+	=====================================
+	Check various DNS name rules : Pass
+	=====================================
+
+
+Setting ACL on bucket
+Setting ACL on obj
+
+The userObj URL is: https://dss.ind-west-1.staging.jiocloudservices.com/rjilbucketsanity1452677262/userObj1?Signature=Jnzg2F6u23TRr0y%2FFpZ%2BP5o6MRY%3D&Expires=1452678263&AWSAccessKeyId=7fd1ef42af424587b24dbd100961417d
+
+The bucket URL is: https://dss.ind-west-1.staging.jiocloudservices.com/rjilbucketsanity1452677262/?Signature=Nk6qCC790H0nkOor0W5mhDG4Wzo%3D&Expires=1452678263&AWSAccessKeyId=7fd1ef42af424587b24dbd100961417d
+15 Seconds left before Obj deletion
+10 Seconds left before Obj deletion
+5 Seconds left before Obj deletion
+0 Seconds left before Obj deletion
+Object deleted
+
+15 Seconds left before bucket deletion
+10 Seconds left before bucket deletion
+5 Seconds left before bucket deletion
+0 Seconds left before bucket deletion
+Bucket deleted
+
+
+	=====================================
+	Public URL test : Pass
+	=====================================
+
+

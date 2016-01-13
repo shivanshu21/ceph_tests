@@ -3,26 +3,28 @@ from boto.s3.key import Key
 from boto.s3.connection import S3Connection
 import re
 import sys
-
+import time
 ###################### INIT ########################
 
 # PARAMS
-GLOBAL_DEBUG = 0
-RADOSHOST = '127.0.0.1'
-RADOSPORT = 7480
+GLOBAL_DEBUG = 1
+#RADOSHOST = '127.0.0.1'
+#RADOSPORT = 7480
+RADOSHOST = 'dss.ind-west-1.staging.jiocloudservices.com'
+RADOSPORT = 443
 
 # ACCESS PARAMS
-has_incore_params = False
+has_incore_params = True
 access_key = ''
 secret_key = ''
-isSecure   = False
+isSecure   = True
 
 ####################################################
 
 ################## CREATE CONNECTION ###############
 
 def getConnection():
-        conn_obj = None
+    conn_obj = None
     if (has_incore_params):
         conn_obj = boto.connect_s3(
             aws_access_key_id     = access_key,
@@ -31,7 +33,7 @@ def getConnection():
             port = RADOSPORT,
             is_secure = isSecure,
             calling_format = boto.s3.connection.OrdinaryCallingFormat(),
-            debug = 2,
+            #debug = 2,
         )
     else:
         return -1
@@ -71,11 +73,12 @@ def createMaxBuckets(num, buckpref):
         for i in range(1, num + 1):
             name = buckpref + str(i)
             buck = myobj.create_bucket(name)
+            whisper("Creating bucket " + name)
             for j in range(1, 11):
                 k = Key(buck)
                 k.key = name + '_OBJ_' + str(j)
+                whisper("Creating object " + k.key)
                 k.set_contents_from_string('Data for obj ' + str(j))
-
     return;
 
 ####################################################

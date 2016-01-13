@@ -7,8 +7,8 @@ from boto.s3.key import Key
 
 MULTIPART_LARGE_FILE = '/boot/vmlinuz-3.19.0-25-generic'
 dssSanityLib.GLOBAL_DEBUG = 1
-dssSanityLib.RADOSHOST = '127.0.0.1'
-dssSanityLib.RADOSPORT = 7480
+##dssSanityLib.RADOSHOST = '127.0.0.1'
+##dssSanityLib.RADOSPORT = 7480
 
 ############### MAX BUCKET LIMIT ###################
 
@@ -17,21 +17,22 @@ def bucketSanity():
     ## Create five buckets
     dssSanityLib.whisper("Creating five test buckets and putting objects in them...")
     bucketpref = dssSanityLib.getsNewBucketName()
-    dssSanityLib.createMaxBuckets(5, bucketpref)
+    dssSanityLib.createMaxBuckets(12, bucketpref)
 
     ## Bucket name conflict during creation
-    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
-    userObj = getConnection()
-    buck_str = bucketpref + '1'
-    try:
-        b = userObj.create_bucket(buck_str)
-        print "Error: Unexpectedly created bucket " + buck_str
-        return -1
-    except:
-        print "Expected failure: " + str(sys.exc_info())
+#    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
+#    userObj = dssSanityLib.getConnection()
+#    buck_str = bucketpref + '1'
+#    try:
+#        b = userObj.create_bucket(buck_str)
+#        print "Error: Unexpectedly created bucket " + buck_str
+#        return -1
+#    except:
+#        print "Expected failure: " + str(sys.exc_info())
 
     ## Delete all buckets
     try:
+        userObj = dssSanityLib.getConnection()
         dssSanityLib.whisper("Deleting the test buckets...")
         dssSanityLib.cleanupUser(userObj, bucketpref)
     except:
@@ -48,7 +49,8 @@ def multipartObjectUpload():
     dssSanityLib.whisper("Making bucket and listing...")
     userObj = dssSanityLib.getConnection()
     bucketpref = dssSanityLib.getsNewBucketName()
-    userObj.create_bucket(bucketpref)
+    b = userObj.create_bucket(bucketpref)
+    b.set_acl('public-read-write')
     dssSanityLib.listBucket(userObj, "User")
 
     source_path = MULTIPART_LARGE_FILE
@@ -168,7 +170,7 @@ def publicUrlTest():
         time.sleep(1)
         if i % 5 == 0:
             print str(20 - i) + " Seconds left before bucket deletion"
-    userObj.delete_bucket('urlbucket1')
+    userObj.delete_bucket(bucketpref)
     print "Bucket deleted\n"
 
     return result
@@ -182,4 +184,9 @@ dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete th
 dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
 dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
 dssSanityLib.callTest(publicUrlTest(), "Public URL test")
+
+#userObj = dssSanityLib.getConnection()
+#dssSanityLib.cleanupUser(userObj, 'rjilbucketsanity')
+
+
 ####################################################
