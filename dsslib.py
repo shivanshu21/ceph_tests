@@ -3,12 +3,19 @@ from boto.s3.key import Key
 from boto.s3.connection import S3Connection
 import re
 import sys
+
 ###################### INIT ########################
 
 # PARAMS
 GLOBAL_DEBUG = 0
 RADOSHOST = '127.0.0.1'
 RADOSPORT = 7480
+
+# ACCESS PARAMS
+has_incore_params = False
+access_key = ''
+secret_key = ''
+isSecure   = False
 
 # USER PROFILES
 USER_local1 = 0
@@ -44,29 +51,38 @@ user_profiles = [
 
 ################## CREATE CONNECTION ###############
 
-def getConnection(user):
-    if user > MAX_LOCAL_USERS:
+def getConnection(user = None):
+    if (has_incore_params):
+        conn_obj = boto.connect_s3(
+            aws_access_key_id     = access_key,
+            aws_secret_access_key = secret_key,
+            host = RADOSHOST,
+            port = RADOSPORT,
+            is_secure = isSecure,
+            calling_format = boto.s3.connection.OrdinaryCallingFormat(),
+            debug = 2,
+        )
+    elif (user is not None) and (user > MAX_LOCAL_USERS):
         AWS_ACCESS_KEY_ID = user_profiles[user]['access']
         AWS_SECRET_ACCESS_KEY = user_profiles[user]['secret']
         conn_obj = S3Connection(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
         if conn_obj is None:
             print "NULL Object returned for user!!"
-        return conn_obj
-
-    conn_obj = boto.connect_s3(
-                   aws_access_key_id     = user_profiles[user]['access'],
-                   aws_secret_access_key = user_profiles[user]['secret'],
-                   host = RADOSHOST,
-                   port = RADOSPORT,
-                   is_secure = False,
-                   calling_format = boto.s3.connection.OrdinaryCallingFormat(),
-                   debug = 2,
-               )
+    elif (user is not None):
+        conn_obj = boto.connect_s3(
+            aws_access_key_id     = user_profiles[user]['access'],
+            aws_secret_access_key = user_profiles[user]['secret'],
+            host = RADOSHOST,
+            port = RADOSPORT,
+            is_secure = False,
+            calling_format = boto.s3.connection.OrdinaryCallingFormat(),
+            debug = 2,
+        )
     return conn_obj
 
 ####################################################
 
-#################### WHISPER #######################
+############### INFO PRESENTATION ##################
 
 def whisper(mystr):
     if GLOBAL_DEBUG == 1:
@@ -83,7 +99,7 @@ def callTest(output, testname):
 
 ####################################################
 
-################### FILLSUSER  #####################
+############### DATA POPULATION ####################
 
 def createMaxBuckets(user, num, buckpref):
     myobj = getConnection(user)
@@ -114,7 +130,7 @@ def cleanupUser(user, patstr):
     pstring = patstr + '*'
     pattern = re.compile(pstring)
     for bkt in user.get_all_buckets():
-        if pattern.match(bkt.name):
+        if (pattern.match(bkt.name)) or (not patstr):
             for k in bkt.list():
                 whisper("Deleting " + str(k))
                 k.delete()

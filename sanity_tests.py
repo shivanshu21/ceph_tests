@@ -1,0 +1,185 @@
+import dssSanityLib
+import math, os
+from filechunkio import FileChunkIO
+import sys
+import time
+from boto.s3.key import Key
+
+MULTIPART_LARGE_FILE = '/boot/vmlinuz-3.19.0-25-generic'
+dssSanityLib.GLOBAL_DEBUG = 1
+dssSanityLib.RADOSHOST = '127.0.0.1'
+dssSanityLib.RADOSPORT = 7480
+
+############### MAX BUCKET LIMIT ###################
+
+def bucketSanity():
+
+    ## Create five buckets
+    dssSanityLib.whisper("Creating five test buckets and putting objects in them...")
+    bucketpref = dssSanityLib.getsNewBucketName()
+    dssSanityLib.createMaxBuckets(5, bucketpref)
+
+    ## Bucket name conflict during creation
+    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
+    userObj = getConnection()
+    buck_str = bucketpref + '1'
+    try:
+        b = userObj.create_bucket(buck_str)
+        print "Error: Unexpectedly created bucket " + buck_str
+        return -1
+    except:
+        print "Expected failure: " + str(sys.exc_info())
+
+    ## Delete all buckets
+    try:
+        dssSanityLib.whisper("Deleting the test buckets...")
+        dssSanityLib.cleanupUser(userObj, bucketpref)
+    except:
+        print "Unexpected failure: " + str(sys.exc_info())
+        return -1
+    return 0
+
+####################################################
+
+############### MULTI PART UPLOAD ##################
+
+def multipartObjectUpload():
+    result = 0
+    dssSanityLib.whisper("Making bucket and listing...")
+    userObj = dssSanityLib.getConnection()
+    bucketpref = dssSanityLib.getsNewBucketName()
+    userObj.create_bucket(bucketpref)
+    dssSanityLib.listBucket(userObj, "User")
+
+    source_path = MULTIPART_LARGE_FILE
+    source_size = os.stat(source_path).st_size
+    chunk_size = 5242880 ## 5 mb
+    #chunk_size = 1048576  ## 1 mb
+    chunk_count = int(math.ceil(source_size / float(chunk_size)))
+
+    b1 = userObj.get_bucket(bucketpref)
+    dssSanityLib.whisper("Got bucket: " + str(b1))
+    try:
+        mp = b1.initiate_multipart_upload(os.path.basename(source_path))
+        for i in range(chunk_count):
+            dssSanityLib.whisper("Uploading chunk: " + str(i))
+            offset = chunk_size * i
+            bytes = min(chunk_size, source_size - offset)
+            with FileChunkIO(source_path, 'r', offset=offset, bytes=bytes) as fp:
+                mp.upload_part_from_file(fp, part_num=i + 1)
+        mp.complete_upload()
+    except:
+        print "Unexpected error during multipart upload: ", sys.exc_info()
+        result = -1
+
+    dssSanityLib.cleanupUser(userObj, bucketpref)
+    return result
+
+####################################################
+
+#################### DNS TESTS ####################
+
+def dnsNamesTest():
+    userObj = dssSanityLib.getConnection()
+    result = 0
+    longHundredChars = 'a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789a123456789'
+    longFiftyChars = 'a123456789a123456789a123456789a123456789a123456789'
+    longTFTchars = longHundredChars + longHundredChars + longFiftyChars + 'qwe'
+    try:
+        userObj.create_bucket(longTFTchars)
+        userObj.delete_bucket(longTFTchars)
+        print "Able to create bucket with 253 chars in name"
+    except:
+        print "Failed to create or delete a valid bucket name"
+        print "Unexpected error: ", sys.exc_info()
+        return -1
+
+    try:
+        badName = longTFTchars + 'abc'
+        userObj.create_bucket(badName)
+        print "Unexpectedly created bucket with illegally long name"
+        dssSanityLib.listBucketNum(userObj, "user")
+        dssSanityLib.listBucket(userObj, "user")
+        userObj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating 256 char bucket name"
+        print "Expected error: ", sys.exc_info()
+
+    try:
+        badName = 'Abc'
+        userObj.create_bucket(badName)
+        print "Unexpectedly created bucket with capital letter name"
+        dssSanityLib.listBucketNum(userObj, "user")
+        dssSanityLib.listBucket(userObj, "user")
+        userObj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating bucket name with CAPS"
+        print "Expected error: ", sys.exc_info()
+
+    try:
+        badName = 'bc/'
+        userObj.create_bucket(badName)
+        print "Unexpectedly created bucket with slash in name"
+        dssSanityLib.listBucketNum(userObj, "user")
+        dssSanityLib.listBucket(userObj, "user")
+        userObj.delete_bucket(badName)
+        result = -1
+    except:
+        print "Expected failure in creating bucket name with slash"
+        print "Expected error: ", sys.exc_info()
+
+    return result
+
+####################################################
+
+################ PUBLIC URL TESTS ##################
+
+def publicUrlTest():
+    result = 0
+    userObj = dssSanityLib.getConnection()
+    bucketpref = dssSanityLib.getsNewBucketName()
+    b1 = userObj.create_bucket(bucketpref)
+    print "Setting ACL on bucket"
+    b1.set_acl('public-read')
+
+    k = Key(b1)
+    k.key = 'userObj1'
+    k.set_contents_from_string('Data of URL object')
+    print "Setting ACL on obj"
+    k.set_acl('public-read')
+
+    m = Key(b1)
+    m.key = 'userObj1'
+    urlname = m.generate_url(1000)
+    print "\nThe userObj URL is: " + str(urlname)
+    urlname = b1.generate_url(1000)
+    print "\nThe bucket URL is: " + str(urlname)
+
+    for i in range(1, 21):
+        time.sleep(1)
+        if i % 5 == 0:
+            print str(20 - i) + " Seconds left before Obj deletion"
+    m.delete()
+    print "Object deleted\n"
+
+    for i in range(1, 21):
+        time.sleep(1)
+        if i % 5 == 0:
+            print str(20 - i) + " Seconds left before bucket deletion"
+    userObj.delete_bucket('urlbucket1')
+    print "Bucket deleted\n"
+
+    return result
+
+####################################################
+
+#################### CALL TESTS ####################
+
+
+dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
+dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
+dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
+dssSanityLib.callTest(publicUrlTest(), "Public URL test")
+####################################################
