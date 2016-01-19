@@ -1,3 +1,4 @@
+#!/bin/python
 import dssSanityLib
 from boto.s3.key import Key
 

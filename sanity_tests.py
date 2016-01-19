@@ -1,14 +1,10 @@
-import dssSanityLib
-import math, os
-from filechunkio import FileChunkIO
+import os
 import sys
 import time
+import getopt
+import dssSanityLib
 from boto.s3.key import Key
-
-MULTIPART_LARGE_FILE = '/boot/vmlinuz-3.19.0-25-generic'
-dssSanityLib.GLOBAL_DEBUG = 1
-##dssSanityLib.RADOSHOST = '127.0.0.1'
-##dssSanityLib.RADOSPORT = 7480
+from filechunkio import FileChunkIO
 
 ############### MAX BUCKET LIMIT ###################
 
@@ -177,16 +173,69 @@ def publicUrlTest():
 
 ####################################################
 
-#################### CALL TESTS ####################
+###################### MAIN ########################
 
+def main(argv):
+    MULTIPART_LARGE_FILE = '/boot/initrd.img-3.16.0-55-generic' # Need a large file to upload in multiparts.
+    dssSanityLib.GLOBAL_DEBUG = 1                               # The lib supresses debug logs by default. Override here.
+    ##dssSanityLib.RADOSHOST = '127.0.0.1'                      # The lib points to DSS staging endpoint by default. Override here.
+    ##dssSanityLib.RADOSPORT = 7480                             # The lib points to DSS staging endpoint by default. Override here.
 
-dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
-dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
-dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
-dssSanityLib.callTest(publicUrlTest(), "Public URL test")
+    try:
+        opts, args = getopt.getopt(argv,"a:s:h:i",["access-key=","secret-key=","ifile="])
+    except getopt.GetoptError:
+        printsHelp()
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            printsHelp()
+            sys.exit()
+        elif opt in ("-i", "--ifile"):
+            try:
+                import dsskeys
+                dssSanityLib.has_incore_params = True
+                dssSanityLib.access_key = dsskeys.access_key
+                dssSanityLib.secret_key = dsskeys.secret_key
+            except ImportError:
+                print "Error: Failed to import dsskeys from file. Make sure that the file is present."
+        else:
+            if opt in ("-a", "--access-key"):
+                dssSanityLib.has_incore_params = True
+                dssSanityLib.access_key = arg
+            elif opt in ("-s", "--secret-key"):
+                print "Sending secret key using command line is unsafe. Use dsskeys file."
+                print "Sleeping for 5 seconds before continuing..."
+                time.sleep(5)
+                dssSanityLib.secret_key = arg
 
-#userObj = dssSanityLib.getConnection()
-#dssSanityLib.cleanupUser(userObj, 'rjilbucketsanity')
+    if (not dssSanityLib.has_incore_params):
+        printsHelp()
+        return -1
 
+    ## TESTCASES
+    #dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
+    #dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
+    #dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
+    #dssSanityLib.callTest(publicUrlTest(), "Public URL test")
+
+    ## Do cleanup
+    userObj = dssSanityLib.getConnection()
+    dssSanityLib.cleanupUser(userObj, 'rjilbucketsanity')
+    return
+
+def printsHelp():
+    print "HELP"
+    print "===="
+    print 'sanity_tests.py {-a <Access Key> -s <Secret Key>} or {-i To read from dsskeys}'
+    print 'sanity_tests.py {--access-key <Access Key> --secret-key <Secret Key>} or { --ifile To read from dsskeys}'
+    print "\nDSSKEYS FILE"
+    print "============"
+    print "Make a file called dsskeys.py and put inside it:"
+    print "    access_key = \'<value>\'"
+    print "    secret_key = \'<value>\'"
+    return
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
 
 ####################################################
