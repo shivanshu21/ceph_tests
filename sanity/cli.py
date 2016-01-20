@@ -6,7 +6,10 @@ from boto.s3.key import Key
 ################### FUNCTIONS ######################
 
 def listBucket(targ):
-    userObj = dssSanityLib.getConnection()
+    if (dssSanityLib.CLI_USER):
+        userObj = dssSanityLib.getConnection(int(dssSanityLib.CLI_USER))
+    else:
+        userObj = dssSanityLib.getConnection()
     if (not targ):
         dssSanityLib.listBucketNum(userObj, "user")
         dssSanityLib.listBucket(userObj, "user")
@@ -19,7 +22,11 @@ def listBucket(targ):
 
 def createBucket(num, targ):
     pref = dssSanityLib.getsNewBucketName(targ)
-    userObj = dssSanityLib.getConnection()
+    if (dssSanityLib.CLI_USER):
+        userObj = dssSanityLib.getConnection(int(dssSanityLib.CLI_USER))
+    else:
+        userObj = dssSanityLib.getConnection()
+
     for i in range(1, int(num) + 1):
         buckname = pref + str(i)
         dssSanityLib.whisper("Creating bucket " + buckname)
@@ -27,7 +34,10 @@ def createBucket(num, targ):
     return
 
 def createObject(num, targ):
-    userObj = dssSanityLib.getConnection()
+    if (dssSanityLib.CLI_USER):
+        userObj = dssSanityLib.getConnection(int(dssSanityLib.CLI_USER))
+    else:
+        userObj = dssSanityLib.getConnection()
     b = userObj.get_bucket(targ)
     k = Key(b)
     for i in range(1, int(num) + 1):
@@ -39,7 +49,10 @@ def deleteBucket(targ):
     if (not targ):
         print "Need target to delete!"
         return -1
-    userObj = dssSanityLib.getConnection()
+    if (dssSanityLib.CLI_USER):
+        userObj = dssSanityLib.getConnection(int(dssSanityLib.CLI_USER))
+    else:
+        userObj = dssSanityLib.getConnection()
     dssSanityLib.cleanupUser(userObj, targ)
     return
 
@@ -48,7 +61,7 @@ def deleteBucket(targ):
 def main(argv):
 
     ## PARAM OVERRIDES
-    ##dssSanityLib.GLOBAL_DEBUG = 1               # The lib supresses debug logs by default. Override here.
+    ##dssSanityLib.GLOBAL_DEBUG = 1             # The lib supresses debug logs by default. Override here.
     ##dssSanityLib.RADOSHOST = '127.0.0.1'      # The lib points to DSS staging endpoint by default. Override here.
     ##dssSanityLib.RADOSPORT = 7480             # The lib points to DSS staging endpoint by default. Override here.
 
@@ -65,8 +78,8 @@ def main(argv):
     elif (dssSanityLib.CLI_COMMAND == 'delete_bucket'):
         deleteBucket(dssSanityLib.COMMAND_TARG)
     else:
-        print 'cli.py {-a <Access Key> -s <Secret Key>} or {-i True (To read from dsskeys)} -c <command> -n <number> -t <target>'
-        print 'cli.py {--access-key <Access Key> --secret-key <Secret Key>} or { --ifile True (To read from dsskeys)} --command --number --target'
+        print 'cli.py {-a <Access Key> -s <Secret Key>} or {-i True (To read from dsskeys)} -c <command> -n <number> -t <target> -u <user sequence number>'
+        print 'cli.py {--access-key <Access Key> --secret-key <Secret Key>} or { --ifile True (To read from dsskeys)} [--command --number --target --user]'
         print "\nList of commands:"
         print "list_bucket {--target <bucket-name>}  :  List all buckets or objects of a single bucket."
         print "create_bucket [--number <number of buckets>] [--target <bucket-name-prefix>]  :  Create some buckets."

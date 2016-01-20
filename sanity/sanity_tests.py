@@ -15,15 +15,15 @@ def bucketSanity():
     dssSanityLib.createMaxBuckets(12, bucketpref)
 
     ## Bucket name conflict during creation
-#    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
-#    userObj = dssSanityLib.getConnection()
-#    buck_str = bucketpref + '1'
-#    try:
-#        b = userObj.create_bucket(buck_str)
-#        print "Error: Unexpectedly created bucket " + buck_str
-#        return -1
-#    except:
-#        print "Expected failure: " + str(sys.exc_info())
+    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
+    userObj = dssSanityLib.getConnection(1) ## Different user
+    buck_str = bucketpref + '1'
+    try:
+        b = userObj.create_bucket(buck_str)
+        print "Error: Unexpectedly created bucket " + buck_str
+        return -1
+    except:
+        print "Expected failure: " + str(sys.exc_info())
 
     ## Delete all buckets
     try:
@@ -187,9 +187,9 @@ def main(argv):
         sys.exit(2)
 
     ## TESTCASES
-    dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
+    #dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
     #dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
-    #dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
+    dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
     #dssSanityLib.callTest(publicUrlTest(), "Public URL test")
 
     ## CLEANUP

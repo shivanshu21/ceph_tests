@@ -10,15 +10,17 @@ from boto.s3.connection import S3Connection
 
 # PARAMS
 GLOBAL_DEBUG = 0
-RADOSHOST = 'dss.ind-west-1.staging.jiocloudservices.com'
-RADOSPORT = 443
-CLI_COMMAND = ''
-COMMAND_NUM = ''
+RADOSHOST    = 'dss.ind-west-1.staging.jiocloudservices.com'
+RADOSPORT    = 443
+CLI_USER     = ''
+CLI_COMMAND  = ''
+COMMAND_NUM  = ''
 COMMAND_TARG = ''
 
 # ACCESS PARAMS
 access_key = ''
 secret_key = ''
+user_profiles = None
 isSecure   = True
 isAwsConn  = False
 has_incore_params = False
@@ -27,8 +29,20 @@ has_incore_params = False
 
 ################## CREATE CONNECTION ###############
 
-## <<<<<< by default take for user1 of dsskeys or cli key guy. If value provided, use particular keys.
-def getConnection():
+def getConnection(user = None):
+    global has_incore_params
+    global access_key
+    global secret_key
+    global user_profiles
+
+    if (user is not None) and (user_profiles is not None):
+        try:
+            access_key = user_profiles[user]['access']
+            secret_key = user_profiles[user]['secret']
+        except:
+            print "Must have dsskeys file for multiuser access!"
+            return -1
+
     conn_obj = None
     if (has_incore_params and (GLOBAL_DEBUG == 1)):
         conn_obj = boto.connect_s3(
@@ -76,9 +90,8 @@ def callTest(output, testname):
 
 ############### DATA POPULATION ####################
 
-def createMaxBuckets(num, buckpref):
-    ## <<<<<< take user id. By def 1 or cli guy.
-    obj = getConnection()
+def createMaxBuckets(num, buckpref, user = None):
+    obj = getConnection(user)
     listBucketNum(obj, "User")
     whisper("Creating new buckets")
     for i in range(1, num + 1):
@@ -159,12 +172,14 @@ def fetchArgs(argv):
     global has_incore_params
     global access_key
     global secret_key
+    global user_profiles
+    global CLI_USER
     global CLI_COMMAND
     global COMMAND_NUM
     global COMMAND_TARG
 
     try:
-        opts, args = getopt.getopt(argv,"a:s:h:i:c:n:t",["access-key=","secret-key=","ifile=","command=","number=","target="])
+        opts, args = getopt.getopt(argv,"a:s:h:i:c:n:t:u",["access-key=","secret-key=","ifile=","command=","number=","target=","user="])
     except getopt.GetoptError:
         printsHelp()
         sys.exit(2)
@@ -178,12 +193,15 @@ def fetchArgs(argv):
             COMMAND_NUM = arg
         elif opt in ("-t", "--target"):
             COMMAND_TARG = arg
+        elif opt in ("-u", "--user"):
+            CLI_USER = arg
         elif opt in ("-i", "--ifile"):
             try:
                 import dsskeys
                 has_incore_params = True
-                access_key = dsskeys.access_key
-                secret_key = dsskeys.secret_key
+                access_key        = dsskeys.access_key
+                secret_key        = dsskeys.secret_key
+                user_profiles     = dsskeys.user_profiles
             except ImportError:
                 print "Error: Failed to import dsskeys from file. Make sure that the file is present."
         elif opt in ("-a", "--access-key"):
