@@ -1,6 +1,8 @@
 import re
+import sys
 import time
 import boto
+import getopt
 from boto.s3.key import Key
 from boto.s3.connection import S3Connection
 
@@ -10,17 +12,22 @@ from boto.s3.connection import S3Connection
 GLOBAL_DEBUG = 0
 RADOSHOST = 'dss.ind-west-1.staging.jiocloudservices.com'
 RADOSPORT = 443
+CLI_COMMAND = ''
+COMMAND_NUM = ''
+COMMAND_TARG = ''
 
 # ACCESS PARAMS
-has_incore_params = False
 access_key = ''
 secret_key = ''
 isSecure   = True
+isAwsConn  = False
+has_incore_params = False
 
 ####################################################
 
 ################## CREATE CONNECTION ###############
 
+## <<<<<< by default take for user1 of dsskeys or cli key guy. If value provided, use particular keys.
 def getConnection():
     conn_obj = None
     if (has_incore_params and (GLOBAL_DEBUG == 1)):
@@ -42,6 +49,8 @@ def getConnection():
             is_secure = isSecure,
             calling_format = boto.s3.connection.OrdinaryCallingFormat(),
         )
+    elif (has_incore_params and isAwsConn):
+        conn_obj = S3Connection(access_key, secret_key)
     else:
         return -1
     return conn_obj
@@ -68,16 +77,13 @@ def callTest(output, testname):
 ############### DATA POPULATION ####################
 
 def createMaxBuckets(num, buckpref):
-    myobj = getConnection()
-    if myobj is None:
-        print "Cannot get connection object for user"
-    else:
-        listBucketNum(myobj, "User")
-
+    ## <<<<<< take user id. By def 1 or cli guy.
+    obj = getConnection()
+    listBucketNum(obj, "User")
     whisper("Creating new buckets")
     for i in range(1, num + 1):
         name = buckpref + str(i)
-        buck = myobj.create_bucket(name)
+        buck = obj.create_bucket(name)
         whisper("Creating bucket " + name)
         for j in range(1, 11):
             k = Key(buck)
@@ -133,6 +139,7 @@ def keepChangingAcls(bucket):
 ####################################################
 
 ################ BUCKET NAME GEN ###################
+
 def getsNewBucketName(pref = None):
     ts = time.time()
     str_ts = str(ts)
@@ -143,5 +150,67 @@ def getsNewBucketName(pref = None):
     else:
         bucketpref = str(pref) + str_ts
     return bucketpref
+
+####################################################
+
+################# CLI ARGUMENTS ####################
+
+def fetchArgs(argv):
+    global has_incore_params
+    global access_key
+    global secret_key
+    global CLI_COMMAND
+    global COMMAND_NUM
+    global COMMAND_TARG
+
+    try:
+        opts, args = getopt.getopt(argv,"a:s:h:i:c:n:t",["access-key=","secret-key=","ifile=","command=","number=","target="])
+    except getopt.GetoptError:
+        printsHelp()
+        sys.exit(2)
+    for opt, arg in opts:
+        if opt == '-h':
+            printsHelp()
+            sys.exit()
+        elif opt in ("-c", "--command"):
+            CLI_COMMAND = arg
+        elif opt in ("-n", "--number"):
+            COMMAND_NUM = arg
+        elif opt in ("-t", "--target"):
+            COMMAND_TARG = arg
+        elif opt in ("-i", "--ifile"):
+            try:
+                import dsskeys
+                has_incore_params = True
+                access_key = dsskeys.access_key
+                secret_key = dsskeys.secret_key
+            except ImportError:
+                print "Error: Failed to import dsskeys from file. Make sure that the file is present."
+        elif opt in ("-a", "--access-key"):
+            has_incore_params = True
+            access_key = arg
+        elif opt in ("-s", "--secret-key"):
+            print "Sending secret key using command line is unsafe. Use dsskeys file."
+            print "Sleeping for 5 seconds before continuing..."
+            time.sleep(5)
+            secret_key = arg
+
+    if (not has_incore_params):
+        printsHelp()
+        return -1
+
+    return 0
+
+def printsHelp():
+    print "HELP"
+    print "===="
+    print '<Test script> {-a <Access Key> -s <Secret Key>} or {-i True (To read from dsskeys)}'
+    print '<Test script> {--access-key <Access Key> --secret-key <Secret Key>} or { --ifile True (To read from dsskeys)}'
+    print "\nDSSKEYS FILE"
+    print "============"
+    print "Make a file called dsskeys.py and put inside it:"
+    print "    access_key = \'<value>\'"
+    print "    secret_key = \'<value>\'"
+    return
 
 ####################################################
