@@ -249,6 +249,7 @@ my $signature = encode_base64($hmac->digest, "");
 
 
 my @args = ();
+push @args, ("-v", "");
 push @args, ("-H", "Date: $httpDate");
 push @args, ("-H", "Authorization: AWS $keyId:$signature");
 push @args, ("-H", "x-amz-acl: $acl") if (defined $acl);
@@ -281,17 +282,6 @@ push @args, @ARGV;
 
 debug("exec $CURL " . join (" ", @args));
 exec($CURL, @args)  or die "can't exec program: $!";
-
-=cut
-my $finalDssCommand = "$CURL " . join (" ", @args);
-print $finalDssCommand;
-my $dssOutput = `$finalDssCommand`;
-my @dssOutList = split('><', $dssOutput);
-foreach (@dssOutList) {
-    print $_;
-}
-=cut
-
 
 sub debug {
     my ($str) = @_;
