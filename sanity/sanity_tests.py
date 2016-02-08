@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import math
 import dssSanityLib
 from boto.s3.key import Key
 from filechunkio import FileChunkIO
@@ -15,15 +16,15 @@ def bucketSanity():
     dssSanityLib.createMaxBuckets(12, bucketpref)
 
     ## Bucket name conflict during creation
-    dssSanityLib.whisper("Trying to create a bucket with name conflict...")
-    userObj = dssSanityLib.getConnection(1) ## Different user
-    buck_str = bucketpref + '1'
-    try:
-        b = userObj.create_bucket(buck_str)
-        print "Error: Unexpectedly created bucket " + buck_str
-        return -1
-    except:
-        print "Expected failure: " + str(sys.exc_info())
+    #dssSanityLib.whisper("Trying to create a bucket with name conflict...")
+    #userObj = dssSanityLib.getConnection(1) ## Different user
+    #buck_str = bucketpref + '1'
+    #try:
+        #b = userObj.create_bucket(buck_str)
+        #print "Error: Unexpectedly created bucket " + buck_str
+        #return -1
+    #except:
+    #    print "Expected failure: " + str(sys.exc_info())
 
     ## Delete all buckets
     try:
@@ -48,7 +49,7 @@ def multipartObjectUpload():
     b.set_acl('public-read-write')
     dssSanityLib.listBucket(userObj, "User")
 
-    source_path = MULTIPART_LARGE_FILE
+    source_path = dssSanityLib.MULTIPART_LARGE_FILE
     source_size = os.stat(source_path).st_size
     chunk_size = 5242880 ## 5 mb
     #chunk_size = 1048576  ## 1 mb
@@ -177,7 +178,7 @@ def publicUrlTest():
 def main(argv):
 
     ## PARAM OVERRIDES
-    MULTIPART_LARGE_FILE = '/boot/initrd.img-3.16.0-55-generic' # Need a large file to upload in multiparts.
+    dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.13.0-24-generic' # Need a large file to upload in multiparts.
     dssSanityLib.GLOBAL_DEBUG = 1                               # The lib supresses debug logs by default. Override here.
     ##dssSanityLib.RADOSHOST = '127.0.0.1'                      # The lib points to DSS staging endpoint by default. Override here.
     ##dssSanityLib.RADOSPORT = 7480                             # The lib points to DSS staging endpoint by default. Override here.
@@ -187,10 +188,10 @@ def main(argv):
         sys.exit(2)
 
     ## TESTCASES
-    #dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
-    #dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
+    dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
+    dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
     dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
-    #dssSanityLib.callTest(publicUrlTest(), "Public URL test")
+    dssSanityLib.callTest(publicUrlTest(), "Public URL test")
 
     ## CLEANUP
     userObj = dssSanityLib.getConnection()
