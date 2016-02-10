@@ -10,6 +10,7 @@ from boto.s3.connection import S3Connection
 
 # PARAMS
 GLOBAL_DEBUG = 0
+MULTIPART_LARGE_FILE = ''
 RADOSHOST    = 'dss.ind-west-1.staging.jiocloudservices.com'
 RADOSPORT    = 443
 CLI_USER     = ''

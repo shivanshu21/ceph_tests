@@ -61,7 +61,7 @@ def deleteBucket(targ):
 def main(argv):
 
     ## PARAM OVERRIDES
-    ##dssSanityLib.GLOBAL_DEBUG = 1             # The lib supresses debug logs by default. Override here.
+    dssSanityLib.GLOBAL_DEBUG = 1             # The lib supresses debug logs by default. Override here.
     ##dssSanityLib.RADOSHOST = '127.0.0.1'      # The lib points to DSS staging endpoint by default. Override here.
     ##dssSanityLib.RADOSPORT = 7480             # The lib points to DSS staging endpoint by default. Override here.
 

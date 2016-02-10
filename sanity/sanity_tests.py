@@ -11,7 +11,7 @@ from filechunkio import FileChunkIO
 def bucketSanity():
 
     ## Create five buckets
-    dssSanityLib.whisper("Creating five test buckets and putting objects in them...")
+    dssSanityLib.whisper("Creating buckets and putting objects in them...")
     bucketpref = dssSanityLib.getsNewBucketName()
     dssSanityLib.createMaxBuckets(12, bucketpref)
 
@@ -178,7 +178,7 @@ def publicUrlTest():
 def main(argv):
 
     ## PARAM OVERRIDES
-    dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.13.0-24-generic' # Need a large file to upload in multiparts.
+    dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.19.0-25-generic' # Need a large file to upload in multiparts.
     dssSanityLib.GLOBAL_DEBUG = 1                               # The lib supresses debug logs by default. Override here.
     ##dssSanityLib.RADOSHOST = '127.0.0.1'                      # The lib points to DSS staging endpoint by default. Override here.
     ##dssSanityLib.RADOSPORT = 7480                             # The lib points to DSS staging endpoint by default. Override here.
