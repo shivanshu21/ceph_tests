@@ -1,14 +1,22 @@
 ##============= PARAMS ==============
-#my $user_id        = '08d9079e37ca4750ae1b223af8869f92';
-my $user_id        = '304018976221';
-#my $user_name      = 'DSS';
-my $user_name      = 'dss_test_0001';
-#my $passw          = 'Reliance111@';
-my $passw          = 'D2=lH6-fA2$b';
 
-#my $token          = '86c226d787cb4341911cdf9e5cee1732'; ## Generate and put
-my $token          = '2fb7ae1a40b94926af127a56dd5d77d3'; ## Generate and put
-my $access_key     = '2bf9f42cc7fa47fdae06f14dddd7e4ac';
+## DSS main
+#my $user_id        = '08d9079e37ca4750ae1b223af8869f92';
+#my $user_name      = 'DSS';
+#my $passw          = 'Reliance111@';
+
+## dss_test
+#my $user_id        = '304018976221';
+#my $user_name      = 'dss_test_0001';
+#my $passw          = 'D2=lH6-fA2$b';
+
+## Console account
+my $user_id         = '652281179750';
+my $user_name       = 'console_account';
+my $passw           = '1PaQ3TQK706jx7iA9Dy5EA==';
+
+my $token          = '3caf1cff673e4709b890ddb84b79150b'; ## Generate and put
+my $access_key     = '2bf9f42cc7fa47fdae06f14dddd7e4ac'; ## DSS main. Needed for sign req
 my $user_to_create = ''; ## For creating new users
 ##===================================
 
@@ -24,11 +32,14 @@ my $iam_endpoint   = 'https://iam.ind-west-1.staging.jiocloudservices.com:5000/v
 my $signature      = 'H/AUlsWSTz7LeeeSDhu2G4m8S+E=';
 my $cannonical_str = 'R0VUCgoKRnJpLCAwNSBGZWIgMjAxNiAxMTowNjo0NiBHTVQKLw==';
 our $GLOBAL_DEBUG  = 1;
-##========== IAM REQUESTS ===========
+
+##===================================
+## IAM REQUESTS
+##===================================
 
 my $signreq = "curl -s -vvv -X POST $iam_endpoint/sign-auth -H \"Content-Type: application/json\" -d '{\"credentials\": {\"access\": \"$access_key\", \"signature\": \"$signature\", \"token\": \"$cannonical_str\", \"action_resource_list\": [{\"action\": \"jrn:jcs:dss:ListBucket\", \"resource\": \"jrn:jcs:dss::Bucket:*\", \"implicit_allow\": \"False\"}]}}'";
 
-my $tokreq = "curl -v -H \"Content-Type: application/json\" -d '{ \"auth\": {\"identity\": {\"methods\": [\"password\"],\"password\": {\"user\": {\"name\": \"$user_name\",\"account\": { \"id\": \"$user_id\" },\"password\":\"$passw\"}}}}}' $iam_endpoint/auth/tokens";
+my $tokreq = "curl -v -H \"Content-Type: application/json\" -d '{ \"auth\": {\"identity\": {\"methods\": [\"password\"],\"password\": {\"user\": {\"name\": \"$user_name\",\"account\": { \"id\": \"$user_id\" },\"password\":\"$passw\",\"access\":\"9dce6aa7c5554521b807aa343fc948ce\"}}}}}' $iam_endpoint/auth/tokens";
 
 my $usercreate = "curl -i -H \"Content-Type: application\/json\" -H \"X-Auth-Token: $token\"  \"$iam_endpoint?Action=CreateUser&Name=$user_to_create&Password=Reliance111@\" ";
 
@@ -36,9 +47,11 @@ my $usercredentialscreate = "curl -i -H \"Content-Type: application\/json\" -H \
 
 my $iamtokvalidation = "curl -v -H \"X-Auth-Token: $token\" \"$iam_endpoint/token-auth?action=jrn:jcs:dss:ListBucket&resource=jrn:jcs:dss::Bucket:newbucket \" ";
 
-##========== DSS REQUESTS ===========
+##===================================
+## DSS REQUESTS
+##===================================
 
-my $rgwreq = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/consolebucktest001"; # Create bucket
+#my $rgwreq = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/consolebucktest001"; # Create bucket
 
 #my $rgwreq = "curl -v -H \"X-Auth-Token: $token\" $rgw_endpoint/shivbucket0002"; # List bucket
 
@@ -68,11 +81,13 @@ my $rgwreq = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/conso
 
 #my $rgwreq = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/shivbucket0002"; # Abort multipart uploads
 
-##============ WORKFLOW  ============
+##===================================
+## WORK FLOW
+##===================================
 
 #doAction($signreq);
 #doAction($tokreq);
-doAction($rgwreq);
+#doAction($rgwreq);
 #doAction($usercreate);
 #doAction($usercredentialscreate);
 #doAction($iamtokvalidation);
