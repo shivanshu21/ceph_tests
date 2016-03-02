@@ -11,7 +11,7 @@ from filechunkio import FileChunkIO
 def bucketSanity():
 
     ## Create five buckets
-    dssSanityLib.whisper("Creating buckets and putting objects in them...")
+    dssSanityLib.whisper("Creating five test buckets and putting objects in them...")
     bucketpref = dssSanityLib.getsNewBucketName()
     dssSanityLib.createMaxBuckets(12, bucketpref)
 
@@ -47,7 +47,7 @@ def multipartObjectUpload():
     bucketpref = dssSanityLib.getsNewBucketName()
     b = userObj.create_bucket(bucketpref)
     b.set_acl('public-read-write')
-    dssSanityLib.listBucket(userObj, "User")
+    ##dssSanityLib.listBucket(userObj, "User")
 
     source_path = dssSanityLib.MULTIPART_LARGE_FILE
     source_size = os.stat(source_path).st_size
@@ -65,7 +65,15 @@ def multipartObjectUpload():
             bytes = min(chunk_size, source_size - offset)
             with FileChunkIO(source_path, 'r', offset=offset, bytes=bytes) as fp:
                 mp.upload_part_from_file(fp, part_num=i + 1)
+
+        print("\n\nListing uploads")
+        time.sleep(2)
+        b1.list_multipart_uploads()
+        b1.get_all_multipart_uploads()
         mp.complete_upload()
+        #print("\n\nCancelling uploads")
+        #mp.cancel_upload()
+
     except:
         print "Unexpected error during multipart upload: ", sys.exc_info()
         result = -1
@@ -178,6 +186,7 @@ def publicUrlTest():
 def main(argv):
 
     ## PARAM OVERRIDES
+    #dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.13.0-24-generic' # Need a large file to upload in multiparts.
     dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.19.0-25-generic' # Need a large file to upload in multiparts.
     dssSanityLib.GLOBAL_DEBUG = 1                               # The lib supresses debug logs by default. Override here.
     ##dssSanityLib.RADOSHOST = '127.0.0.1'                      # The lib points to DSS staging endpoint by default. Override here.
