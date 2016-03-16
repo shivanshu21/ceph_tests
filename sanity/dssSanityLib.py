@@ -11,12 +11,19 @@ from boto.s3.connection import S3Connection
 # PARAMS
 GLOBAL_DEBUG = 0
 MULTIPART_LARGE_FILE = ''
+
 #RADOSHOST    = 'dss.ind-west-1.staging.jiocloudservices.com'
-#RADOSHOST     = '127.0.0.1'
-RADOSHOST    = '10.140.214.198'
 #RADOSPORT    = 443
-#RADOSPORT    = 8000
+#isSecure     = True
+
+#RADOSHOST     = '127.0.0.1'
+#RADOSPORT     = 8000
+#isSecure      = False
+
+RADOSHOST    = '10.140.214.196'
 RADOSPORT    = 7480
+isSecure     = False
+
 CLI_USER     = ''
 CLI_COMMAND  = ''
 COMMAND_NUM  = ''
@@ -26,8 +33,6 @@ COMMAND_TARG = ''
 access_key = ''
 secret_key = ''
 user_profiles = None
-isSecure   = False
-#isSecure   = True
 isAwsConn  = False
 has_incore_params = False
 

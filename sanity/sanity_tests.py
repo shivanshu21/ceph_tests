@@ -46,7 +46,7 @@ def multipartObjectUpload():
     userObj = dssSanityLib.getConnection()
     bucketpref = dssSanityLib.getsNewBucketName()
     b = userObj.create_bucket(bucketpref)
-    b.set_acl('public-read-write')
+    #b.set_acl('public-read-write')
     ##dssSanityLib.listBucket(userObj, "User")
 
     source_path = dssSanityLib.MULTIPART_LARGE_FILE
@@ -66,10 +66,14 @@ def multipartObjectUpload():
             with FileChunkIO(source_path, 'r', offset=offset, bytes=bytes) as fp:
                 mp.upload_part_from_file(fp, part_num=i + 1)
 
-        print("\n\nListing uploads")
         time.sleep(2)
-        b1.list_multipart_uploads()
-        b1.get_all_multipart_uploads()
+        for i in b1.list_multipart_uploads():
+            print "list_multipart_uploads: " + str(i)
+
+        for i in b1.get_all_multipart_uploads():
+            print "get_all_multipart_uploads: " + str(i)
+
+        print("\n\nCompleting uploads")
         mp.complete_upload()
         #print("\n\nCancelling uploads")
         #mp.cancel_upload()
@@ -147,35 +151,35 @@ def publicUrlTest():
     userObj = dssSanityLib.getConnection()
     bucketpref = dssSanityLib.getsNewBucketName()
     b1 = userObj.create_bucket(bucketpref)
-    print "Setting ACL on bucket"
-    b1.set_acl('public-read')
+    #print "Setting ACL on bucket"
+    #b1.set_acl('public-read')
 
     k = Key(b1)
     k.key = 'userObj1'
     k.set_contents_from_string('Data of URL object')
-    print "Setting ACL on obj"
-    k.set_acl('public-read')
+    #print "Setting ACL on obj"
+    #k.set_acl('public-read')
 
     m = Key(b1)
     m.key = 'userObj1'
     urlname = m.generate_url(1000)
     print "\nThe userObj URL is: " + str(urlname)
-    urlname = b1.generate_url(1000)
+    urlname = b1.generate_url(10000)
     print "\nThe bucket URL is: " + str(urlname)
 
-    for i in range(1, 21):
-        time.sleep(1)
-        if i % 5 == 0:
-            print str(20 - i) + " Seconds left before Obj deletion"
-    m.delete()
-    print "Object deleted\n"
+    #for i in range(1, 21):
+    #    time.sleep(1)
+    #    if i % 5 == 0:
+    #        print str(20 - i) + " Seconds left before Obj deletion"
+    #m.delete()
+    #print "Object deleted\n"
 
-    for i in range(1, 21):
-        time.sleep(1)
-        if i % 5 == 0:
-            print str(20 - i) + " Seconds left before bucket deletion"
-    userObj.delete_bucket(bucketpref)
-    print "Bucket deleted\n"
+    #for i in range(1, 21):
+    #    time.sleep(1)
+    #    if i % 5 == 0:
+    #        print str(20 - i) + " Seconds left before bucket deletion"
+    #userObj.delete_bucket(bucketpref)
+    #print "Bucket deleted\n"
 
     return result
 
@@ -187,10 +191,10 @@ def main(argv):
 
     ## PARAM OVERRIDES
     #dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.13.0-24-generic' # Need a large file to upload in multiparts.
-    dssSanityLib.MULTIPART_LARGE_FILE = '/boot/initrd.img-3.19.0-25-generic' # Need a large file to upload in multiparts.
-    dssSanityLib.GLOBAL_DEBUG = 1                               # The lib supresses debug logs by default. Override here.
-    ##dssSanityLib.RADOSHOST = '127.0.0.1'                      # The lib points to DSS staging endpoint by default. Override here.
-    ##dssSanityLib.RADOSPORT = 7480                             # The lib points to DSS staging endpoint by default. Override here.
+    dssSanityLib.MULTIPART_LARGE_FILE = 'output.dat' # Need a large file to upload in multiparts.
+    dssSanityLib.GLOBAL_DEBUG = 1                    # The lib supresses debug logs by default. Override here.
+    ##dssSanityLib.RADOSHOST = '127.0.0.1'           # The lib points to DSS staging endpoint by default. Override here.
+    ##dssSanityLib.RADOSPORT = 7480                  # The lib points to DSS staging endpoint by default. Override here.
 
     ret = dssSanityLib.fetchArgs(argv)
     if(ret == -1):
@@ -199,12 +203,12 @@ def main(argv):
     ## TESTCASES
     dssSanityLib.callTest(bucketSanity(), "Create buckets and objects then delete them")
     dssSanityLib.callTest(multipartObjectUpload(), "Upload object in Multiparts")
-    dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
+    #dssSanityLib.callTest(dnsNamesTest(), "Check various DNS name rules")
     dssSanityLib.callTest(publicUrlTest(), "Public URL test")
 
     ## CLEANUP
     userObj = dssSanityLib.getConnection()
-    dssSanityLib.cleanupUser(userObj, 'rjilbucketsanity')
+    #dssSanityLib.cleanupUser(userObj, 'rjilbucketsanity')
     return
 
 if __name__ == "__main__":

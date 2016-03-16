@@ -6,12 +6,12 @@ from datetime import datetime
 
 ################ PARAMS #####################
 
-DEBUG           = 0
+DEBUG           = 1
 NUMBER_OF_TRIES = 1      # Time reported per thread is an average over how many tries
 IS_SIGN_REQ     = True   # False implies token request
 IAM_TOKEN       = ''     # In case of token request, provide a new token
-DURATION        = 10     # Seconds
-REQ_PER_SEC     = 30     # Requests per second
+DURATION        = 2     # Seconds
+REQ_PER_SEC     = 5     # Requests per second
 #############################################
 
 
@@ -27,7 +27,10 @@ threadLock = threading.Lock()
 signreq = ''
 
 if (IS_SIGN_REQ):
-    signreq = "curl -s -X POST https://iam.ind-west-1.staging.jiocloudservices.com:35357/v3/sign-auth -H \"Content-Type: application/json\" -d '{\"credentials\": {\"access\": \"c312c8c23a9e45398003b256759cef05\", \"signature\": \"XLt82oXi5FCN02w48MhU3Idy5dE=\", \"token\": \"R0VUCgoKVHVlLCAwOSBGZWIgMjAxNiAxODoyNDo1MCBHTVQKL3JqaWxidWNrZXRzYW5pdHkxNDU1MDQyMjc2Lw==\", \"action_resource_list\": [{\"action\": \"jrn:jcs:dss:CreateBucket\", \"resource\": \"jrn:jcs:dss::Bucket:newb\", \"implicit_allow\": \"False\"}]}}'"
+    signreq = "curl -s -X POST https://iam.ind-west-1.staging.jiocloudservices.com:35357/v3/sign-auth -H \"Content-Type: application/json\" -d '{\"credentials\": {\"access\": \"c767a3a2c9f74df59f2e96bbc8480768\", \"signature\": \"AnItAjUSRLMgGsQIKoOLoQb+eHo=\", \"token\": \"R0VUCgoKVGh1LCAwMyBNYXIgMjAxNiAxMjowNzowNCBHTVQKLw==\", \"action_resource_list\": [{\"action\": \"jrn:jcs:dss:CreateBucket\", \"resource\": \"jrn:jcs:dss::Bucket:newb\", \"implicit_allow\": \"False\"}]}}'" # DSS test 0000 sign
+
+    #signreq = "curl -s -X POST https://iam.ind-west-1.staging.jiocloudservices.com:35357/v3/sign-auth -H \"Content-Type: application/json\" -d '{\"credentials\": {\"access\": \"c312c8c23a9e45398003b256759cef05\", \"signature\": \"XLt82oXi5FCN02w48MhU3Idy5dE=\", \"token\": \"R0VUCgoKVHVlLCAwOSBGZWIgMjAxNiAxODoyNDo1MCBHTVQKL3JqaWxidWNrZXRzYW5pdHkxNDU1MDQyMjc2Lw==\", \"action_resource_list\": [{\"action\": \"jrn:jcs:dss:CreateBucket\", \"resource\": \"jrn:jcs:dss::Bucket:newb\", \"implicit_allow\": \"False\"}]}}'" ## DSS root sign
+
 else:
     signreq = "curl -H \"X-Auth-Token: " + IAM_TOKEN + "\" https://iam.ind-west-1.staging.jiocloudservices.com:35357/v3/token-auth?action=jrn:jcs:dss:ListBucket&resource=jrn:jcs:dss::Bucket:*"
 
@@ -48,6 +51,7 @@ def sendreq():
     start = datetime.now()
     child = pexpect.spawn(signreq, timeout=300)
     child.read()
+    print child.before
     end = datetime.now()
     td = end - start
     return (td.total_seconds() * 1000)

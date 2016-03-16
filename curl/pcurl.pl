@@ -9,23 +9,23 @@
 #my $cannonical_str = 'R0VUCgoKRnJpLCAwNSBGZWIgMjAxNiAxMTowNjo0NiBHTVQKLw==';
 
 ## dss_test
-#my $user_id        = '304018976221';
-#my $user_name      = 'dss_test_0001';
-#my $passw          = 'D2=lH6-fA2$b';
+#my $user_id        = '';
+#my $user_name      = '';
+#my $passw          = '';
 #my $access_key     = '';
 #my $signature      = '';
 #my $cannonical_str = '';
 
 
 ## Console account
-my $user_id         = '652281179750';
-my $user_name       = 'console_account';
-my $passw           = 'eblLLz4pj+pPyczEzAs9ZQ==';
-my $access_key      = '1376e515a13b459c9e390612b855afc1';
+#my $user_id         = '652281179750';
+#my $user_name       = 'console_account';
+#my $passw           = '';
+#my $access_key      = '';
 #my $signature      = '';
 #my $cannonical_str = '';
 
-my $token          = '8548e7ac9889404c839d89ef9b7b539e_8548e7ac9889404c839d89ef9b7b539e'; ## Generate and put
+my $token          = ''; ## Generate and put
 my $user_to_create = ''; ## For creating new users
 ##===================================
 
@@ -35,8 +35,8 @@ my $user_to_create = ''; ## For creating new users
 ##===================================
 
 ## No terminating slash '/' in URLs
-#my $rgw_endpoint  = 'http://127.0.0.1:8000';
-my $rgw_endpoint   = 'http://10.140.214.196:7480';
+my $rgw_endpoint  = 'http://127.0.0.1:8000';
+#my $rgw_endpoint   = 'http://10.140.214.198:7480';
 my $iam_endpoint   = 'https://iam.ind-west-1.staging.jiocloudservices.com:5000/v3';
 our $GLOBAL_DEBUG  = 1;
 
@@ -58,7 +58,7 @@ my $iamtokvalidation = "curl -v -H \"X-Auth-Token: $token\" \"$iam_endpoint/toke
 ## DSS REQUESTS
 ##===================================
 
-my $rgwreqcb = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/cobucket002"; # Create bucket
+my $rgwreqcb = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/cobucket001"; # Create bucket
 
 my $rgwreqlb = "curl -v -H \"X-Auth-Token: $token\" $rgw_endpoint/cobucket002"; # List bucket
 
@@ -94,7 +94,7 @@ my $rgwreqmd = "curl -v -X \"PUT\" -H \"X-Auth-Token: $token\" $rgw_endpoint/shi
 
 #doAction($signreq);
 #doAction($tokreq);
-#doAction($rgwreq);
+doAction($rgwreqlb);
 #doAction($usercreate);
 #doAction($usercredentialscreate);
 #doAction($iamtokvalidation);
